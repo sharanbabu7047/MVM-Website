@@ -3,10 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery | Maharishi Vidya Mandir, Red Hills</title>
+  <title>Activities and Events | Maharishi Vidya Mandir, Red Hills</title>
   <meta name="description" content="View photo and media updates from Maharishi Vidya Mandir, Red Hills, Chennai. Discover images from school activities, meditation events, sports, and classrooms.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="images/logo.png">
+  <style>
+    /* Event Layout Styles */
+    .events-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 20px;
+    }
+    
+    .events-sidebar {
+      background: var(--white);
+      padding: 25px 20px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--pastel-green);
+    }
+    
+    .events-sidebar h3 {
+      font-size: 1.4rem;
+      color: var(--mvm-green-dark);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--mvm-gold);
+      text-transform: uppercase;
+      font-family: var(--font-serif);
+    }
+    
+    .events-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    
+    .event-tab-item {
+      padding: 12px 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .event-tab-item:last-child {
+      border-bottom: none;
+    }
+    
+    .event-tab-item:hover {
+      color: var(--mvm-gold-bright);
+      padding-left: 15px;
+    }
+    
+    .event-tab-item.active {
+      color: var(--mvm-gold-bright) !important;
+      font-weight: bold;
+      padding-left: 15px;
+    }
+    
+    .event-tab-item.active::before {
+      content: "— ";
+      color: var(--mvm-gold);
+      font-weight: bold;
+    }
+    
+    .events-content {
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--pastel-green);
+      min-height: 400px;
+    }
+    
+    .event-panel {
+      display: none;
+    }
+    
+    .event-panel.active {
+      display: block;
+      animation: fadeIn 0.4s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .event-title {
+      font-size: 1.8rem;
+      color: var(--mvm-green-dark);
+      margin-bottom: 25px;
+      font-family: var(--font-serif);
+      border-bottom: 1px dashed var(--pastel-green);
+      padding-bottom: 10px;
+    }
+    
+    .event-slider-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+    
+    .event-gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+    
+    .event-img-card {
+      border: 2px solid #232b5d; /* Dark blue/green border matching the screenshot */
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+    
+    .event-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .event-img-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .slider-arrow-btn {
+      background-color: transparent;
+      border: none;
+      color: #232b5d;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .slider-arrow-btn:hover {
+      color: var(--mvm-gold);
+    }
+    
+    /* Responsive adjustment */
+    @media (max-width: 900px) {
+      .events-layout {
+        grid-template-columns: 1fr;
+      }
+      .event-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Chetpet Master Header Format -->
@@ -22,17 +183,14 @@
 
         <!-- Center Header Details -->
         <div class="chetpet-center-info">
-          <img src="images/logo.png" alt="MVM Logo" class="chetpet-center-logo">
           <h1>MAHARISHI VIDYA MANDIR</h1>
           <div class="chetpet-branch-title">RED HILLS, CHENNAI</div>
-          <div class="chetpet-cbse-info">Affiliated to CBSE (New Delhi) | Kindergarten to Class VI</div>
           <div class="chetpet-address-info">S.NO.136, 148/1B1B, PUDHU NAGAR 3RD STREET, PULI LYON VILLAGE, RED HILLS, CHENNAI - 600 052.</div>
         </div>
 
-        <!-- Right Badge -->
-        <div class="chetpet-right-badge">
-          <h3>MVM RED HILLS</h3>
-          <a href="admissions.html" class="badge-sub">Admissions Open 2026-27</a>
+        <!-- Right Logo -->
+        <div class="chetpet-right-logo">
+          <img src="images/logo.png" alt="MVM Logo">
         </div>
 
       </div>
@@ -43,14 +201,40 @@
   <nav class="nav-bar" id="nav-bar">
     <div class="container nav-container">
       <ul class="nav-menu" id="navigation-links">
-        <li class="nav-item"><a href="index.html" >Home</a></li>
-        <li class="nav-item"><a href="about.html" >About Us</a></li>
-        <li class="nav-item"><a href="admissions.html" >Admissions</a></li>
-        <li class="nav-item"><a href="academics.html" >Academics</a></li>
-        <li class="nav-item"><a href="facilities.html" >Facilities</a></li>
-        <li class="nav-item"><a href="gallery.html" class="active">Gallery</a></li>
-        <li class="nav-item"><a href="news.html" >News & Events</a></li>
-        <li class="nav-item"><a href="contact.html" >Contact Us</a></li>
+        <li class="nav-item">
+          <a href="index.html" aria-label="Home">
+            <svg class="home-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="dropdown-toggle">Our School</a>
+          <ul class="dropdown-menu">
+            <li><a href="history.html">History</a></li>
+            <li><a href="our-founder.html">Our Founder</a></li>
+            <li><a href="teacher-training.html">Teacher Training</a></li>
+            <li><a href="gallery.html">Activities and Events</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="dropdown-toggle">Scholastic</a>
+          <ul class="dropdown-menu">
+            <li><a href="academics.html">Syllabus</a></li>
+            <li><a href="quiz-club.html">Quiz Club</a></li>
+            <li><a href="book-club.html">Book Club</a></li>
+            <li><a href="learning-by-doing.html">Learning by Doing</a></li>
+            <li><a href="competitions.html">Competitions</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="dropdown-toggle">Non-Scholastic</a>
+          <ul class="dropdown-menu">
+            <li><a href="extra-curricular.html">Extra Curricular Activities</a></li>
+            <li><a href="after-school.html">After School Activities</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="admissions.html">Admissions</a></li>
+        <li class="nav-item"><a href="contact.html">Contact Us</a></li>
       </ul>
 
       <button class="mobile-nav-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation">
@@ -65,122 +249,69 @@
   <div class="flash-news-bar" id="flash-news-ticker">
     <div class="flash-title">Flash News</div>
     <div class="flash-content">
-      <div class="flash-marquee">
-        &bull; <a href="admissions.html" style="color:#000000; text-decoration:underline; font-weight:800;">Admissions Open for Academic Session 2026-27 (Kindergarten to Class VI)</a> &nbsp;&nbsp;&nbsp;&nbsp;&bull; Integrated Yogasana, Pranayama & Transcendental Meditation &nbsp;&nbsp;&nbsp;&nbsp;&bull; <a href="admissions.html" style="color:#000000; text-decoration:underline; font-weight:800;">Click here to Apply Online for Admission</a>
-      </div>
+      <div class="flash-marquee">&bull; <a href="admissions.html" style="color:#000000; text-decoration:underline; font-weight:800;">Admissions Open for Academic Session 2027-28 (Kindergarten to Class VI)</a></div>
     </div>
   </div>
 
   <main id="main-content">
-    <section class="page-banner" id="gallery-banner">
+    <section class="page-banner" id="gallery-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider2.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
       <div class="container">
-        <h1>Media Gallery</h1>
+        <h1>Activities and Events</h1>
         <div class="breadcrumb">
-          <a href="index.html">Home</a> &gt; Gallery
+          <a href="index.html">Home</a> &gt; Activities and Events
         </div>
       </div>
     </section>
 
-    <!-- Gallery Grid and Filtering -->
-    <section class="section" id="gallery-grid-section">
+    <!-- Event Sidebar and Panels Layout -->
+    <section class="section" id="events-grid-section">
       <div class="container">
-        <div class="section-header">
-          <span class="subtitle">Visual Memories</span>
-          <h2>A Glimpse into MVM Red Hills life</h2>
-          <p>Explore pictures of classroom spaces, student activities, sports, and daily yoga meditation sessions.</p>
-        </div>
-
-        <!-- Filter buttons -->
-        <div class="gallery-filters" id="gallery-filter-buttons">
-          <button class="filter-btn active" data-filter="all" id="btn-filter-all">All Photos</button>
-          <button class="filter-btn" data-filter="infrastructure" id="btn-filter-infra">Infrastructure</button>
-          <button class="filter-btn" data-filter="academics" id="btn-filter-academics">Academics</button>
-          <button class="filter-btn" data-filter="yoga" id="btn-filter-yoga">Yoga & Meditation</button>
-          <button class="filter-btn" data-filter="sports" id="btn-filter-sports">Sports & PT</button>
-        </div>
-
-        <!-- Gallery Grid -->
-        <div class="gallery-grid" id="gallery-photos-container">
-          <!-- Item 1: Infra -->
-          <div class="gallery-item" data-category="infrastructure" id="photo-item-1">
-            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=600&auto=format&fit=crop" alt="School building and facade">
-            <div class="gallery-overlay">
-              <h4>School Entrance</h4>
-              <span>Infrastructure</span>
-            </div>
+        <div class="events-layout">
+          
+          <!-- Left Sidebar -->
+          <div class="events-sidebar">
+            <h3>Events</h3>
+            <ul class="events-list">
+              <li class="event-tab-item active" data-event="kalavarshini">Kalavarshini</li>
+              <li class="event-tab-item" data-event="independence">Independence Day</li>
+            </ul>
           </div>
           
-          <!-- Item 2: Academics -->
-          <div class="gallery-item" data-category="academics" id="photo-item-2">
-            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=600&auto=format&fit=crop" alt="Classroom teaching session">
-            <div class="gallery-overlay">
-              <h4>Science Lecture</h4>
-              <span>Academics</span>
+          <!-- Right Content Panel -->
+          <div class="events-content">
+            
+            <!-- Kalavarshini Panel -->
+            <div class="event-panel active" id="panel-kalavarshini">
+              <h2 class="event-title">Kalavarshini</h2>
+              <div class="event-slider-container">
+                <div class="event-gallery-grid">
+                  <div class="event-img-card zoom-image">
+                    <img src="images/kalavarshini1.png" alt="MVM Kalavarshini Cultural Event Dance Performance">
+                  </div>
+                  <div class="event-img-card zoom-image">
+                    <img src="images/kalavarshini2.jpg" alt="MVM Kalavarshini Radha Krishna Celebration">
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+            
+            <!-- Independence Day Panel -->
+            <div class="event-panel" id="panel-independence">
+              <h2 class="event-title">Independence Day</h2>
+              <div class="event-slider-container">
+                <div class="event-gallery-grid">
+                  <div class="event-img-card zoom-image">
+                    <img src="images/independence1.jpg" alt="MVM Independence Day Student Drill Performance">
+                  </div>
+                  <div class="event-img-card zoom-image">
+                    <img src="images/independence2.jpg" alt="MVM Independence Day Stage Celebration Flag Hoisting">
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <!-- Item 3: Yoga -->
-          <div class="gallery-item" data-category="yoga" id="photo-item-3">
-            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=600&auto=format&fit=crop" alt="Students practicing meditation postures">
-            <div class="gallery-overlay">
-              <h4>Daily Meditation</h4>
-              <span>Yoga & Meditation</span>
-            </div>
           </div>
-
-          <!-- Item 4: Sports -->
-          <div class="gallery-item" data-category="sports" id="photo-item-4">
-            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=600&auto=format&fit=crop" alt="Athletic training field">
-            <div class="gallery-overlay">
-              <h4>Athletic Track Practice</h4>
-              <span>Sports & PT</span>
-            </div>
-          </div>
-
-          <!-- Item 5: Infra -->
-          <div class="gallery-item" data-category="infrastructure" id="photo-item-5">
-            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop" alt="School library book stacks">
-            <div class="gallery-overlay">
-              <h4>Reading Library</h4>
-              <span>Infrastructure</span>
-            </div>
-          </div>
-
-          <!-- Item 6: Academics -->
-          <div class="gallery-item" data-category="academics" id="photo-item-6">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop" alt="Students working on laptops in lab">
-            <div class="gallery-overlay">
-              <h4>Computer lab session</h4>
-              <span>Academics</span>
-            </div>
-          </div>
-
-          <!-- Item 7: Yoga -->
-          <div class="gallery-item" data-category="yoga" id="photo-item-7">
-            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop" alt="Stretching exercises">
-            <div class="gallery-overlay">
-              <h4>Yoga posture (Asana) practice</h4>
-              <span>Yoga & Meditation</span>
-            </div>
-          </div>
-
-          <!-- Item 8: Sports -->
-          <div class="gallery-item" data-category="sports" id="photo-item-8">
-            <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=600&auto=format&fit=crop" alt="Students playing football on court">
-            <div class="gallery-overlay">
-              <h4>Football Training</h4>
-              <span>Sports & PT</span>
-            </div>
-          </div>
-
-          <!-- Item 9: Academics -->
-          <div class="gallery-item" data-category="academics" id="photo-item-9">
-            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=600&auto=format&fit=crop" alt="Teacher explaining drawing art board">
-            <div class="gallery-overlay">
-              <h4>Art & Drawing workshop</h4>
-              <span>Academics</span>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>
@@ -197,7 +328,6 @@
   </div>
 
   <!-- Footer Section -->
-    <!-- Footer Section -->
   <footer id="site-footer">
     <div class="container footer-grid">
       <div class="footer-col" id="footer-col-about">
@@ -213,12 +343,9 @@
         <h4>Quick Links</h4>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="gallery.html">Activities and Events</a></li>
           <li><a href="admissions.html">Admissions</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="facilities.html">Facilities</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="news.html">News & Events</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
@@ -257,7 +384,87 @@
     </div>
   </footer>
 
-  <!-- Link Interactivity JavaScript -->
   <script src="js/main.js"></script>
+  <script>
+    // Tab Interaction Logic for Events Page
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabItems = document.querySelectorAll('.event-tab-item');
+      const panels = document.querySelectorAll('.event-panel');
+      
+      tabItems.forEach(item => {
+        item.addEventListener('click', () => {
+          // Remove active class from all tabs & panels
+          tabItems.forEach(t => t.classList.remove('active'));
+          panels.forEach(p => p.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          item.classList.add('active');
+          
+          // Show the corresponding panel
+          const eventId = item.getAttribute('data-event');
+          const activePanel = document.getElementById(`panel-${eventId}`);
+          if (activePanel) {
+            activePanel.classList.add('active');
+          }
+        });
+      });
+      
+      // Lightbox logic specific to event-img-card zoom
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      const lightboxPrev = document.getElementById('lightbox-prev');
+      const lightboxNext = document.getElementById('lightbox-next');
+      
+      let activePanelImages = [];
+      let currentPanelIdx = 0;
+      
+      const imgCards = document.querySelectorAll('.event-img-card img');
+      imgCards.forEach(img => {
+        img.addEventListener('click', () => {
+          // Find all images in the active panel
+          const activePanel = img.closest('.event-panel');
+          const panelImgs = activePanel.querySelectorAll('.event-img-card img');
+          
+          activePanelImages = [];
+          panelImgs.forEach((pImg, idx) => {
+            activePanelImages.push(pImg.src);
+            if (pImg === img) {
+              currentPanelIdx = idx;
+            }
+          });
+          
+          showPanelLightbox(currentPanelIdx);
+        });
+      });
+      
+      function showPanelLightbox(idx) {
+        if (activePanelImages.length > 0) {
+          lightboxImg.src = activePanelImages[idx];
+          lightbox.classList.add('active');
+        }
+      }
+      
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', () => {
+          lightbox.classList.remove('active');
+        });
+      }
+      
+      if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', () => {
+          currentPanelIdx = (currentPanelIdx - 1 + activePanelImages.length) % activePanelImages.length;
+          showPanelLightbox(currentPanelIdx);
+        });
+      }
+      
+      if (lightboxNext) {
+        lightboxNext.addEventListener('click', () => {
+          currentPanelIdx = (currentPanelIdx + 1) % activePanelImages.length;
+          showPanelLightbox(currentPanelIdx);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

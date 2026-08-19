@@ -3,10 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academics | Maharishi Vidya Mandir, Red Hills</title>
-  <meta name="description" content="Explore the academics programs at Maharishi Vidya Mandir, Red Hills, Chennai. Discover our CBSE curriculum, syllabus guides, and co-curricular programs.">
+  <title>Achievements | Maharishi Vidya Mandir, Red Hills</title>
+  <meta name="description" content="Discover the student and academic achievements at Maharishi Vidya Mandir, Red Hills, Chennai, including board exam successes, sports cups, and Olympiad ranks.">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/svg+xml" href="images/logo.png">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <style>
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .achievement-card {
+      background: var(--white);
+      border: 1px solid var(--pastel-green);
+      border-radius: var(--border-radius-lg);
+      padding: 30px 25px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--mvm-gold);
+    }
+    
+    .achievement-icon {
+      background-color: var(--pastel-green-light);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mvm-green-dark);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .achievement-card:hover .achievement-icon {
+      background-color: var(--mvm-gold);
+      color: var(--white);
+    }
+    
+    .achievement-card h3 {
+      font-size: 1.3rem;
+      color: var(--mvm-green-dark);
+      margin-bottom: 12px;
+      font-family: var(--font-serif);
+    }
+    
+    .achievement-card p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
   <!-- Chetpet Master Header Format -->
@@ -73,7 +132,6 @@
           </ul>
         </li>
         <li class="nav-item"><a href="admissions.html">Admissions</a></li>
-        
         <li class="nav-item"><a href="contact.html">Contact Us</a></li>
       </ul>
 
@@ -94,107 +152,24 @@
   </div>
 
   <main id="main-content">
-    <section class="page-banner" id="academics-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider4.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
+    <section class="page-banner" id="achievements-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider4.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
       <div class="container">
-        <h1 style="color: var(--white); font-size: 2.8rem; margin-bottom: 10px;">Syllabus</h1>
+        <h1 style="color: var(--white); font-size: 2.8rem; margin-bottom: 10px;">Our Achievements</h1>
         <div class="breadcrumb" style="font-size: 1.05rem;">
-          <a href="index.html" style="color: var(--mvm-gold-bright); text-decoration: none;">Home</a> &gt; <span style="color: var(--white);">Syllabus</span>
+          <a href="index.html" style="color: var(--mvm-gold-bright); text-decoration: none;">Home</a> &gt; <span style="color: var(--white);">Achievements</span>
         </div>
       </div>
     </section>
 
-    <!-- Syllabus Table Section -->
-    <section class="section" id="syllabus-table-section" style="background-color: var(--white); padding: 60px 0;">
-      <div class="container" style="max-width: 900px;">
-        <div style="overflow-x: auto;">
-          <table class="syllabus-table" style="width: 100%; border-collapse: collapse; box-shadow: var(--shadow-sm); font-family: var(--font-sans); text-align: center;">
-            <thead>
-              <tr style="background-color: var(--mvm-green); color: var(--white); font-weight: bold; border: 1px solid var(--mvm-green);">
-                <th style="padding: 15px; border: 1px solid var(--mvm-green); text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.5px;">S No.</th>
-                <th style="padding: 15px; border: 1px solid var(--mvm-green); text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.5px;">Primary I to V</th>
-                <th style="padding: 15px; border: 1px solid var(--mvm-green); text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.5px;">Middle School VI to VIII</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="background-color: var(--white); border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">1</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">English</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">English</td>
-              </tr>
-              <tr style="background-color: #f9f9f9; border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">2</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">English Grammar</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Mathematics</td>
-              </tr>
-              <tr style="background-color: var(--white); border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">3</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Mathematics</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Mathematics-Lab Activity</td>
-              </tr>
-              <tr style="background-color: #f9f9f9; border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">4</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Computer Science</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Science</td>
-              </tr>
-              <tr style="background-color: var(--white); border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">5</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Phe</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Computer Science</td>
-              </tr>
-              <tr style="background-color: #f9f9f9; border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">6</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Art Education</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Art And Craft</td>
-              </tr>
-              <tr style="background-color: var(--white); border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">7</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Craft</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Music</td>
-              </tr>
-              <tr style="background-color: #f9f9f9; border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">8</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Music</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Life Skills</td>
-              </tr>
-              <tr style="background-color: var(--white); border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">9</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">English Lab</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Health and Physical Education</td>
-              </tr>
-              <tr style="background-color: #f9f9f9; border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">10</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Tamil II And III Lang</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Tamil II And III Lang</td>
-              </tr>
-              <tr style="background-color: var(--white); border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">11</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Hindi II and III Lang</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Hindi II and III Lang</td>
-              </tr>
-              <tr style="background-color: #f9f9f9; border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">12</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Sanskrit II and III Lang</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Sanskrit II and III Lang</td>
-              </tr>
-              <tr style="background-color: var(--white); border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">13</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">&ndash;</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">French II and III Lang</td>
-              </tr>
-              <tr style="background-color: #f9f9f9; border-bottom: 1px solid #e5e7eb;">
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">14</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">&ndash;</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">Social Science</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <!-- Achievements Section -->
+    <section class="section" id="achievements-section" style="background-color: var(--white); min-height: 300px;">
+      <div class="container">
+        <!-- Content intentionally left empty to match template placeholder layout -->
       </div>
     </section>
   </main>
 
   <!-- Footer Section -->
-    <!-- Footer Section -->
   <footer id="site-footer">
     <div class="container footer-grid">
       <div class="footer-col" id="footer-col-about">
@@ -210,12 +185,9 @@
         <h4>Quick Links</h4>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="gallery.html">Activities and Events</a></li>
           <li><a href="admissions.html">Admissions</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="facilities.html">Facilities</a></li>
-          <li><a href="gallery.html">Activities and Events</a></li>
-          
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
@@ -254,7 +226,6 @@
     </div>
   </footer>
 
-  <!-- Link Interactivity JavaScript -->
   <script src="js/main.js"></script>
 </body>
 </html>

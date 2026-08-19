@@ -2,15 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
 
 :root {
-  /* Green & Pastel Family Palette */
-  --mvm-green-dark: #081c15;    /* Deep Forest Green */
-  --mvm-green: #1b4332;         /* Primary School Green (Nav Bar, Badges, Titles) */
-  --mvm-green-mid: #2d6a4f;     /* Secondary Emerald Green */
-  --mvm-green-light: #52b788;
+  /* Updated Green & Accent Family Palette matching mvmmangadu.in */
+  --mvm-green-dark: #0c6f37;    /* Primary dark green */
+  --mvm-green: #0f9048;         /* Primary Brand Green */
+  --mvm-green-mid: #14a052;     /* Medium Brand Green */
+  --mvm-green-light: #48c37d;
   
-  --mvm-gold: #c59b27;          /* Academic Gold Accent */
+  --mvm-gold: #f05a28;          /* Accent Orange/Red (replacing old gold) */
   --mvm-gold-bright: #ffda6a;   /* Ticker Yellow */
   --mvm-cream: #fbfcf8;
+  --mvm-maroon: #800000;        /* Maroon for school headers */
+  --footer-bg: #5c2d3a;         /* Deep reddish-brown for footer */
   
   --pastel-green: #e8f5e9;      /* Soft Pastel Green Background */
   --pastel-green-light: #f4f9f4;
@@ -128,9 +130,20 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
 
 .chetpet-header-container {
   display: grid;
-  grid-template-columns: 220px 1fr 210px;
+  grid-template-columns: 220px 1fr 220px;
   align-items: center;
   gap: 20px;
+}
+
+.chetpet-right-logo {
+  text-align: center;
+}
+
+.chetpet-right-logo img {
+  max-height: 180px;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
 }
 
 /* Left Arched Golden Founder Frame */
@@ -179,7 +192,7 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
 .chetpet-center-info h1 {
   font-family: var(--font-serif);
   font-size: 2.2rem;
-  color: var(--mvm-green);
+  color: var(--mvm-maroon);
   letter-spacing: 1px;
   margin-bottom: 2px;
   text-transform: uppercase;
@@ -825,7 +838,7 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
 
 /* Footer Section */
 footer {
-  background-color: var(--mvm-green-dark);
+  background-color: var(--footer-bg);
   color: rgba(255,255,255,0.88);
   padding: 60px 0 20px;
   border-top: 4px solid var(--mvm-gold);
@@ -950,6 +963,12 @@ footer {
   text-align: center;
   font-size: 0.9rem;
   color: rgba(255,255,255,0.6);
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 /* Toast */
@@ -1093,4 +1112,369 @@ footer {
     flex-direction: column;
     gap: 12px;
   }
+}
+
+/* =========================================================
+   DROPDOWN MENU STYLING (HOVER FOR DESKTOP, TAP FOR MOBILE)
+   ========================================================= */
+.nav-item.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--mvm-green-dark);
+  min-width: 230px;
+  list-style: none;
+  padding: 8px 0;
+  border-top: 3px solid var(--mvm-gold);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-menu li a {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: block;
+  width: 100%;
+  color: var(--white);
+  transition: var(--transition);
+}
+
+.dropdown-menu li:last-child a {
+  border-bottom: none;
+}
+
+.dropdown-menu li a:hover {
+  background-color: var(--white);
+  color: var(--mvm-green-dark);
+  padding-left: 24px;
+}
+
+/* Show dropdown on hover (Desktop) */
+@media (min-width: 901px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown styling in mobile drawer */
+@media (max-width: 900px) {
+  .dropdown-menu {
+    position: static;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: none;
+    border-top: none;
+    padding-left: 15px;
+    opacity: 1;
+    transform: none;
+    min-width: auto;
+  }
+  .nav-item.dropdown.open .dropdown-menu {
+    display: block;
+  }
+  .dropdown-toggle::after {
+    content: ' ▼';
+    font-size: 0.7rem;
+    vertical-align: middle;
+  }
+}
+
+/* =========================================================
+   AD SLIDER CAROUSEL STYLING
+   ========================================================= */
+.slider-section {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.slider-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide.contain-img {
+  background-color: #ffffff;
+}
+
+.slide.contain-img img {
+  object-fit: contain;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(15, 144, 72, 0.7);
+  color: var(--white);
+  border: none;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.slider-arrow:hover {
+  background-color: var(--mvm-gold);
+  color: var(--white);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-arrow {
+  left: 20px;
+}
+
+.next-arrow {
+  right: 20px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.slider-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.slider-dots .dot.active,
+.slider-dots .dot:hover {
+  background-color: var(--mvm-green);
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .slider-section {
+    height: 320px;
+  }
+}
+
+/* =========================================================
+   STATS COUNTER SECTION STYLING (matching user requirements)
+   ========================================================= */
+.stats-counter-section {
+  background-color: var(--pastel-green); /* Soft pastel green matching our site */
+  padding: 60px 0;
+  border-bottom: 3px solid var(--mvm-gold); /* Orange border */
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: center;
+  align-items: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  color: var(--white);
+  border: 3px solid var(--white);
+  transition: transform 0.3s ease;
+}
+
+.stat-circle:hover {
+  transform: scale(1.1);
+}
+
+.stat-circle-blue {
+  background-color: var(--mvm-green); /* Emerald Green */
+}
+
+.stat-circle-orange {
+  background-color: var(--mvm-gold); /* Orange/Red */
+}
+
+.stat-circle-pink {
+  background-color: var(--mvm-maroon); /* Maroon */
+}
+
+.stat-circle svg {
+  width: 48px;
+  height: 48px;
+  stroke: currentColor;
+}
+
+.stat-number {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--mvm-green-dark);
+  line-height: 1.1;
+  margin-bottom: 5px;
+  font-family: var(--font-serif);
+}
+
+.stat-label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--mvm-green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* =========================================================
+   ADMISSION POPUP MODAL STYLING
+   ========================================================= */
+.popup-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-modal.show {
+  display: flex;
+}
+
+.popup-modal-content {
+  position: relative;
+  background-color: #fefefe;
+  padding: 10px;
+  border: 4px solid var(--mvm-gold);
+  border-radius: var(--border-radius-lg);
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  animation: popupScale 0.3s ease-out;
+}
+
+@keyframes popupScale {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.popup-modal-content img {
+  max-width: 100%;
+  max-height: calc(80vh - 28px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: var(--border-radius);
+}
+
+.popup-modal-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: bold;
+  background-color: var(--mvm-gold);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.popup-modal-close:hover {
+  background-color: var(--mvm-green-dark);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+.slide-contain-bg {
+  background: linear-gradient(to right, #84c7fc, #65bef8) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.slide-contain-bg img.img-contain {
+  object-fit: contain !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
 }

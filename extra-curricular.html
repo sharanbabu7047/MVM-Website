@@ -3,10 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maharishi Vidya Mandir, Red Hills | Official School Website</title>
-  <meta name="description" content="Official website of Maharishi Vidya Mandir, Red Hills, Chennai. CBSE Curriculum from Kindergarten to Class VI with Transcendental Meditation, Yogasana, and Pranayama.">
+  <title>Extra Curricular Activities | Maharishi Vidya Mandir, Red Hills</title>
+  <meta name="description" content="Discover the Extra-Curricular Activities at Maharishi Vidya Mandir, Red Hills, Chennai, featuring Volleyball and Football programs designed for student physical development.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/png" href="images/logo.png">
+  <style>
+    @keyframes slideShow {
+      0%, 40% { transform: translateX(0); }
+      50%, 90% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .sport-row {
+      display: flex;
+      gap: 50px;
+      margin-bottom: 70px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .sport-text {
+      flex: 1.2;
+      min-width: 320px;
+    }
+    .sport-media {
+      flex: 0.8;
+      min-width: 320px;
+    }
+    @media (max-width: 768px) {
+      .sport-row {
+        flex-direction: column !important;
+        gap: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Chetpet Master Header Format -->
@@ -41,7 +69,7 @@
     <div class="container nav-container">
       <ul class="nav-menu" id="navigation-links">
         <li class="nav-item">
-          <a href="index.html" class="active" aria-label="Home">
+          <a href="index.html" aria-label="Home">
             <svg class="home-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           </a>
         </li>
@@ -68,12 +96,11 @@
         <li class="nav-item dropdown">
           <a href="#" class="dropdown-toggle">Non-Scholastic</a>
           <ul class="dropdown-menu">
-            <li><a href="extra-curricular.html">Extra Curricular Activities</a></li>
+            <li><a href="extra-curricular.html" class="active">Extra Curricular Activities</a></li>
             <li><a href="after-school.html">After School Activities</a></li>
           </ul>
         </li>
         <li class="nav-item"><a href="admissions.html">Admissions</a></li>
-        
         <li class="nav-item"><a href="contact.html">Contact Us</a></li>
       </ul>
 
@@ -94,116 +121,74 @@
   </div>
 
   <main id="main-content">
-    <!-- Sliding Banner Ads Slider -->
-    <section class="slider-section" id="home-slider">
-      <div class="slider-container">
-        <div class="slide active contain-img">
-          <img src="images/slider2.png" alt="MVM Red Hills Admissions Open">
-        </div>
-        <div class="slide contain-img">
-          <img src="images/slider1.png" alt="MVM Red Hills Kids Class">
-        </div>
-        <div class="slide contain-img">
-          <img src="images/ad_believe.jpg" alt="MVM Red Hills Admissions Open Believe Begin Become">
-        </div>
-
-        
-        <!-- Navigation Arrows -->
-        <button class="slider-arrow prev-arrow" id="slider-prev">&lt;</button>
-        <button class="slider-arrow next-arrow" id="slider-next">&gt;</button>
-        
-        <!-- Indicator Dots -->
-        <div class="slider-dots" id="slider-dots">
-          <span class="dot active" data-index="0"></span>
-          <span class="dot" data-index="1"></span>
-          <span class="dot" data-index="2"></span>
+    <section class="page-banner" id="extra-curricular-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider3.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
+      <div class="container">
+        <h1 style="color: var(--white); font-size: 2.8rem; margin-bottom: 10px;">Extra Curricular Activities</h1>
+        <div class="breadcrumb" style="font-size: 1.05rem;">
+          <a href="index.html" style="color: var(--mvm-gold-bright); text-decoration: none;">Home</a> &gt; <span style="color: var(--white);">Extra Curricular Activities</span>
         </div>
       </div>
     </section>
 
-    <!-- Welcome Section (PDF Text) -->
-    <section class="section" id="welcome-section" style="background-color: var(--white); border-bottom: 2px solid var(--mvm-gold);">
+    <!-- Extra Curricular Section -->
+    <section class="section" id="extra-curricular-section" style="background-color: var(--mvm-cream); padding: 60px 0;">
       <div class="container">
-        <div style="max-width: 900px; margin: 0 auto;">
-          <span class="section-header" style="text-align: center; margin-bottom: 25px; display: block;">
-            <span class="subtitle">Welcome to our School</span>
-            <h2 style="color: var(--mvm-green-dark); font-size: 2.2rem; font-family: var(--font-serif); margin-top: 5px;">Maharishi Vidya Mandir, Red Hills</h2>
-          </span>
-          <p style="font-size: 1.15rem; line-height: 1.85; color: var(--text-dark); margin-bottom: 20px; font-weight: 600; text-align: center; font-family: var(--font-serif);">
-            Education is vital for the holistic development of a child. Our prime focus is not only on developing a child’s intellectual capacities, but also to provide opportunities to explore other dimensions of life. If we want to see the world as a just and fair place where everyone is given equal opportunities, MVM is what we require.
-          </p>
-          <p style="font-size: 1.08rem; line-height: 1.8; color: var(--text-muted); text-align: justify; font-family: var(--font-serif);">
-            Here in MVM, we provide children with an inspiring and loving atmosphere that is devoid of fear, ridicule, and comparison. MVM moulds children into vibrant human beings who have the necessary confidence, openness and willingness to question themselves and the world around them. MVM creates learning spaces to support your child's learning process through week-long programme mode. MVM is a stress-free environment with transcendental meditation.
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+          <span class="subtitle" style="color: var(--mvm-gold); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Sports & Games</span>
+          <h2 style="margin-top: 5px; color: var(--mvm-green-dark);">Sports at Maharishi</h2>
+          <p style="max-width: 700px; margin: 10px auto 0; color: var(--text-muted);">
+            At MAHARISHI, we lay a strong emphasis on sports and physical development. Our sports curriculum is planned and designed for students to develop and enhance skills like strength, speed, endurance, agility, flexibility, control, balance etc.
           </p>
         </div>
-      </div>
-    </section>
 
-    <!-- Statistics Section -->
-    <section class="section-alt" id="stats-section" style="background-color: var(--pastel-green-light); padding: 50px 0; border-bottom: 2px solid var(--mvm-gold);">
-      <div class="container">
-        <div class="grid-3" id="stats-counter-grid" style="text-align: center; gap: 30px; align-items: center;">
+        <div style="max-width: 1050px; margin: 0 auto;">
           
-          <!-- Stat 1: Branches -->
-          <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; background: var(--white); padding: 24px; border-radius: var(--border-radius-lg); border: 1px solid var(--pastel-green); box-shadow: var(--shadow-sm);">
-            <div class="stat-icon-wrapper" style="width: 80px; height: 80px; border-radius: 50%; background-color: #87ceeb; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; box-shadow: var(--shadow-sm);">
-              <!-- School Building Icon -->
-              <svg width="40" height="40" fill="none" stroke="#ffffff" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 22H2M19 22V10l-7-5-7 5v12M12 22v-4M9 13h6M9 10h6" />
-              </svg>
+          <!-- Football Row -->
+          <div class="sport-row">
+            <div class="sport-text">
+              <h2 style="font-size: 2rem; color: var(--mvm-green-dark); margin-bottom: 15px; border-bottom: 2px solid var(--mvm-gold); padding-bottom: 8px; display: inline-block;">FootBall</h2>
+              <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-dark); margin-bottom: 20px;">
+                Every child’s fantasy begins with being the next Lionel Messi. Football is the most popular sport and every child must have that experience. We have dedicated football fields along with guided tutoring.
+              </p>
             </div>
-            <div class="stat-number" data-target="44" style="font-size: 2.8rem; font-weight: 800; color: var(--mvm-green-dark); font-family: var(--font-serif);">0</div>
-            <div class="stat-label" style="font-size: 1.15rem; color: var(--text-muted); font-weight: 600; margin-top: 5px;">Branches</div>
-          </div>
-
-          <!-- Stat 2: Students -->
-          <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; background: var(--white); padding: 24px; border-radius: var(--border-radius-lg); border: 1px solid var(--pastel-green); box-shadow: var(--shadow-sm);">
-            <div class="stat-icon-wrapper" style="width: 80px; height: 80px; border-radius: 50%; background-color: #bf5f00; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; box-shadow: var(--shadow-sm);">
-              <!-- Cheerful Kid Icon -->
-              <svg width="40" height="40" fill="none" stroke="#ffffff" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="7" r="4" />
-                <path d="M12 11v8M8 15h8M8 21h8" />
-              </svg>
+            <div class="sport-media">
+              <div class="image-slider" style="position: relative; overflow: hidden; border-radius: var(--border-radius-lg); height: 280px; box-shadow: var(--shadow-md); border: 3px solid var(--mvm-green);">
+                <div class="slider-images" style="display: flex; width: 200%; height: 100%; animation: slideShow 8s infinite ease-in-out;">
+                  <img src="https://mvmschoolschetpet.com/wp-content/uploads/2023/12/sportday_7-1.jpeg" alt="Football Action 1" style="width: 50%; height: 100%; object-fit: cover;">
+                  <img src="https://mvmschoolschetpet.com/wp-content/uploads/2023/12/sportday_8-1.jpeg" alt="Football Action 2" style="width: 50%; height: 100%; object-fit: cover;">
+                </div>
+                <!-- Pagination Dots -->
+                <div style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
+                  <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--white); opacity: 0.8;"></div>
+                  <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--white); opacity: 0.4;"></div>
+                </div>
+              </div>
             </div>
-            <div class="stat-number" data-target="50000" style="font-size: 2.8rem; font-weight: 800; color: var(--mvm-green-dark); font-family: var(--font-serif);">0</div>
-            <div class="stat-label" style="font-size: 1.15rem; color: var(--text-muted); font-weight: 600; margin-top: 5px;">Students</div>
           </div>
 
-          <!-- Stat 3: Staff -->
-          <div class="stat-card" style="display: flex; flex-direction: column; align-items: center; background: var(--white); padding: 24px; border-radius: var(--border-radius-lg); border: 1px solid var(--pastel-green); box-shadow: var(--shadow-sm);">
-            <div class="stat-icon-wrapper" style="width: 80px; height: 80px; border-radius: 50%; background-color: #ff1493; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; box-shadow: var(--shadow-sm);">
-              <!-- User Person Icon -->
-              <svg width="40" height="40" fill="none" stroke="#ffffff" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
+          <!-- Volleyball Row -->
+          <div class="sport-row" style="flex-direction: row-reverse;">
+            <div class="sport-text">
+              <h2 style="font-size: 2rem; color: var(--mvm-green-dark); margin-bottom: 15px; border-bottom: 2px solid var(--mvm-gold); padding-bottom: 8px; display: inline-block;">VolleyBall</h2>
+              <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-dark); margin-bottom: 20px;">
+                Volleyball is a sport that requires teamwork and coordination. Children learn to work in a team, take responsibility and trust their teammates.
+              </p>
             </div>
-            <div class="stat-number" data-target="5000" style="font-size: 2.8rem; font-weight: 800; color: var(--mvm-green-dark); font-family: var(--font-serif);">0</div>
-            <div class="stat-label" style="font-size: 1.15rem; color: var(--text-muted); font-weight: 600; margin-top: 5px;">Staff</div>
+            <div class="sport-media">
+              <div class="image-slider" style="position: relative; overflow: hidden; border-radius: var(--border-radius-lg); height: 280px; box-shadow: var(--shadow-md); border: 3px solid var(--mvm-green);">
+                <div class="slider-images" style="display: flex; width: 200%; height: 100%; animation: slideShow 8s infinite ease-in-out;">
+                  <img src="https://mvmschoolschetpet.com/wp-content/uploads/2023/12/sportday_11.jpeg" alt="Volleyball Action 1" style="width: 50%; height: 100%; object-fit: cover;">
+                  <img src="https://mvmschoolschetpet.com/wp-content/uploads/2023/12/sportday_12.jpeg" alt="Volleyball Action 2" style="width: 50%; height: 100%; object-fit: cover;">
+                </div>
+                <!-- Pagination Dots -->
+                <div style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10;">
+                  <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--white); opacity: 0.8;"></div>
+                  <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--white); opacity: 0.4;"></div>
+                </div>
+              </div>
+            </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- Founder Section (His Holiness Maharishi Mahesh Yogi) -->
-    <section class="section" id="founder-section">
-      <div class="container">
-        <div class="founder-card" id="founder-card-content">
-          <div class="founder-img-wrapper">
-            <img src="images/maharishi.webp" alt="His Holiness Maharishi Mahesh Yogi" class="founder-portrait">
-          </div>
-          <div class="founder-info">
-            <span class="subtitle" style="color:var(--brand-green); font-weight:bold; letter-spacing:1px; display:block; margin-bottom:8px;">FOUNDER & SPIRITUAL GURU</span>
-            <h2 style="color:var(--brand-green-dark); margin-bottom:14px; font-size:2.1rem;">His Holiness Maharishi Mahesh Yogi</h2>
-            <p style="margin-bottom:18px; font-size:1.15rem; line-height:1.8; color:var(--text-dark); font-weight: bold;">
-              With the blessings of His Holiness, the school came into projection during the year 2017 with the motto "Knowledge is structured in Consciousness". He has blessed the world with Maharishi Consciousness based Education.
-            </p>
-            <p style="margin-bottom:18px; font-size:1.05rem; line-height:1.7; color:var(--text-muted);">
-              Founder of Maharishi School of the Age of Enlightenment, who introduced the Transcendental Meditation program to the world for systematically developing higher states of consciousness so that all students everywhere can enliven total brain functioning, unfold their full creative potential to enjoy healthy, happy and successful lives.
-            </p>
-            <a href="about.html" class="btn btn-primary" id="founder-readmore-btn">Read More Philosophy &rarr;</a>
-          </div>
         </div>
       </div>
     </section>
@@ -225,12 +210,9 @@
         <h4>Quick Links</h4>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="gallery.html">Activities and Events</a></li>
           <li><a href="admissions.html">Admissions</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="facilities.html">Facilities</a></li>
-          <li><a href="gallery.html">Activities and Events</a></li>
-          
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
@@ -268,14 +250,6 @@
       <p>&copy; 2026 Maharishi Vidya Mandir, Red Hills. All Rights Reserved.</p>
     </div>
   </footer>
-
-  <!-- Modal Popup for Admission Flyer -->
-  <div id="admission-popup-modal" class="popup-modal">
-    <div class="popup-modal-content">
-      <span class="popup-modal-close" id="popup-modal-close">&times;</span>
-      <img src="images/admission_popup.png" alt="MVM Red Hills Admission Open Flyer">
-    </div>
-  </div>
 
   <script src="js/main.js"></script>
 </body>
