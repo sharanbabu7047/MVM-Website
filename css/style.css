@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 2.5rem; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.45rem; }
-p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif); }
+p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif); text-align: justify; }
 
 .container {
   width: 100%;
@@ -1263,6 +1263,7 @@ footer {
   height: 100%;
   object-fit: contain;
   display: block;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 .slider-arrow {
