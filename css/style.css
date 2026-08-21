@@ -130,7 +130,7 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
 
 .chetpet-header-container {
   display: grid;
-  grid-template-columns: 220px 1fr 220px;
+  grid-template-columns: 180px 1fr 180px;
   align-items: center;
   gap: 20px;
 }
@@ -140,8 +140,9 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
 }
 
 .chetpet-right-logo img {
-  max-height: 180px;
-  width: auto;
+  width: 180px;
+  height: 180px;
+  max-width: 100%;
   object-fit: contain;
   display: inline-block;
 }
@@ -159,7 +160,7 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
 
 .chetpet-founder-frame img {
   width: 100%;
-  height: 220px;
+  height: 150px;
   object-fit: cover;
   object-position: top center;
   border-radius: 6px;
@@ -219,12 +220,13 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
 
 .chetpet-address-info {
   font-family: var(--font-serif);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   color: var(--mvm-green-dark);
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 /* Right Green Badge Box */
@@ -933,6 +935,17 @@ footer {
   font-size: 0.98rem;
 }
 
+.footer-contact-item a {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.98rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-contact-item a:hover {
+  color: var(--mvm-gold-bright);
+}
+
 .social-links {
   display: flex;
   gap: 10px;
@@ -1046,6 +1059,7 @@ footer {
   }
   .chetpet-address-info {
     font-size: 0.8rem;
+    white-space: normal;
   }
   
   .mobile-nav-toggle {
@@ -1195,10 +1209,14 @@ footer {
    ========================================================= */
 .slider-section {
   position: relative;
-  width: 100%;
-  height: 520px;
+  width: 92%;
+  max-width: 1200px;
+  margin: 30px auto 20px;
+  height: 460px;
   overflow: hidden;
-  background-color: #000;
+  background-color: var(--white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .slider-container {
@@ -1218,6 +1236,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .slide.active {
@@ -1225,19 +1244,25 @@ footer {
   z-index: 2;
 }
 
-.slide img {
-  width: 100%;
+.slide-blur-bg {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.75);
+  z-index: 1;
+}
+
+.slide-fg-img {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.slide.contain-img {
-  background-color: #ffffff;
-}
-
-.slide.contain-img img {
   object-fit: contain;
+  display: block;
 }
 
 .slider-arrow {
@@ -1301,7 +1326,9 @@ footer {
 
 @media (max-width: 768px) {
   .slider-section {
-    height: 320px;
+    height: 250px;
+    width: 95%;
+    margin: 20px auto 15px;
   }
 }
 
