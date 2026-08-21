@@ -137,6 +137,8 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
 
 .chetpet-right-logo {
   text-align: center;
+  position: relative;
+  right: 30px;
 }
 
 .chetpet-right-logo img {
