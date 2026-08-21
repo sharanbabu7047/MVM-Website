@@ -145,6 +145,7 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
   max-width: 100%;
   object-fit: contain;
   display: inline-block;
+  transform: scale(1.55);
 }
 
 /* Left Arched Golden Founder Frame */
