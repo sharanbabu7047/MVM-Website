@@ -439,15 +439,8 @@ p { font-size: 1.05rem; color: var(--text-muted); font-family: var(--font-serif)
   color: var(--mvm-green);
 }
 
-.section-header h2::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 75px;
-  height: 3px;
-  background-color: var(--mvm-gold);
+.section-header p {
+  text-align: center;
 }
 
 /* Hero Section */
@@ -863,16 +856,6 @@ footer {
   margin-bottom: 20px;
   position: relative;
   padding-bottom: 6px;
-}
-
-.footer-col h4::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background-color: var(--mvm-gold);
 }
 
 .footer-col p {

@@ -201,10 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
   }
 
-  // 8. Admission Enquiry Form Validation
+  // 8. Admission Enquiry Form Validation & Submission
   const admissionForm = document.getElementById('admission-enquiry-form');
+  const admissionSubmitBtn = document.getElementById('enquiry-submit-btn');
   if (admissionForm) {
-    admissionForm.addEventListener('submit', (e) => {
+    admissionForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
       let isValid = true;
@@ -214,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('email').value.trim();
       const dob = document.getElementById('dob').value;
       const grade = document.getElementById('grade_interest').value;
+      const message = document.getElementById('message').value.trim();
       
       // Simple phone regex validation (10 digits minimum)
       const phoneRegex = /^[0-9+\s\-]{10,15}$/;
@@ -241,17 +243,50 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
       if (isValid) {
-        // Display beautiful toast notification
-        showToast(`Thank you, ${parentName}. Admission enquiry for ${studentName} (Grade ${grade}) has been successfully submitted! Check your email for details.`);
-        admissionForm.reset();
+        // Change button state
+        const originalText = admissionSubmitBtn.innerText;
+        admissionSubmitBtn.innerText = 'Submitting...';
+        admissionSubmitBtn.disabled = true;
+
+        try {
+          const response = await fetch('/api/admissions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              student_name: studentName,
+              dob: dob,
+              grade_interest: grade,
+              parent_name: parentName,
+              phone: phone,
+              email: email,
+              message: message
+            })
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            showToast(`Thank you, ${parentName}. Admission enquiry for ${studentName} (Grade ${grade}) has been successfully submitted! Check your email for details.`);
+            admissionForm.reset();
+          } else {
+            showToast(data.message || 'Error submitting form. Please try again later.', 'error');
+          }
+        } catch (err) {
+          console.error(err);
+          showToast('Network error. Please try again.', 'error');
+        } finally {
+          admissionSubmitBtn.innerText = originalText;
+          admissionSubmitBtn.disabled = false;
+        }
       }
     });
   }
 
-  // 9. Contact Message Form Validation
+  // 9. Contact Message Form Validation & Submission
   const contactForm = document.getElementById('contact-form');
+  const contactSubmitBtn = document.getElementById('contact-submit-btn');
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
       const name = document.getElementById('contact_name').value.trim();
@@ -270,8 +305,36 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       
-      showToast(`Thank you, ${name}. Your message has been sent successfully.`);
-      contactForm.reset();
+      const originalText = contactSubmitBtn.innerText;
+      contactSubmitBtn.innerText = 'Sending...';
+      contactSubmitBtn.disabled = true;
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contact_name: name,
+            contact_email: email,
+            contact_message: message
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          showToast(`Thank you, ${name}. Your message has been sent successfully.`);
+          contactForm.reset();
+        } else {
+          showToast(data.message || 'Failed to send message. Please try again.', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('Network error. Please try again.', 'error');
+      } finally {
+        contactSubmitBtn.innerText = originalText;
+        contactSubmitBtn.disabled = false;
+      }
     });
   }
 
