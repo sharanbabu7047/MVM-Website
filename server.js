@@ -78,7 +78,7 @@ app.post('/api/admissions', async (req, res) => {
     res.status(201).json({ success: true, message: 'Admission enquiry submitted successfully.' });
   } catch (error) {
     console.error('Admission API Error:', error);
-    res.status(500).json({ success: false, message: 'Internal Server Error' });
+    res.status(500).json({ success: false, message: 'Internal Server Error: ' + (error.message || error) });
   }
 });
 
@@ -111,7 +111,7 @@ app.post('/api/contact', async (req, res) => {
     res.status(201).json({ success: true, message: 'Message sent successfully.' });
   } catch (error) {
     console.error('Contact API Error:', error);
-    res.status(500).json({ success: false, message: 'Internal Server Error' });
+    res.status(500).json({ success: false, message: 'Internal Server Error: ' + (error.message || error) });
   }
 });
 
