@@ -65,6 +65,23 @@
       line-height: 1.6;
       margin: 0;
     }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      margin-top: 30px;
+    }
+    @media (max-width: 992px) {
+      .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -162,9 +179,52 @@
     </section>
 
     <!-- Achievements Section -->
-    <section class="section" id="achievements-section" style="background-color: var(--white); min-height: 300px;">
+    <section class="section" id="achievements-section" style="background-color: var(--white); min-height: 300px; padding: 60px 0;">
       <div class="container">
-        <!-- Content intentionally left empty to match template placeholder layout -->
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+          <h2 style="color: var(--mvm-green-dark);">Outstanding Results 2026</h2>
+          <p style="color: var(--text-muted);">Celebrating the Remarkable Achievements of Our Students</p>
+        </div>
+        
+        <div class="results-grid">
+          
+          <div class="result-card" style="background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; display: flex; flex-direction: column;">
+            <div style="flex-grow: 1; display: flex; align-items: center; background-color: #f9f9f9; padding: 10px;">
+              <img src="images/jee.jpg" alt="JEE Advanced 2026 Results" style="width: 100%; height: auto; display: block; border-radius: 4px;">
+            </div>
+            <div style="background-color: var(--mvm-green-dark); color: var(--white); padding: 15px; text-align: center; font-family: var(--font-serif); font-size: 1.15rem; font-weight: bold; text-transform: uppercase;">
+              JEE Advanced - 2026
+            </div>
+          </div>
+          
+          <div class="result-card" style="background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; display: flex; flex-direction: column;">
+            <div style="flex-grow: 1; display: flex; align-items: center; background-color: #f9f9f9; padding: 10px;">
+              <img src="images/XII-MVM-Results-pg2-2026.jpg" alt="SSCE Results 2026" style="width: 100%; height: auto; display: block; border-radius: 4px;">
+            </div>
+            <div style="background-color: var(--mvm-green-dark); color: var(--white); padding: 15px; text-align: center; font-family: var(--font-serif); font-size: 1.15rem; font-weight: bold; text-transform: uppercase;">
+              SSCE Results - 2026
+            </div>
+          </div>
+          
+          <div class="result-card" style="background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; display: flex; flex-direction: column;">
+            <div style="flex-grow: 1; display: flex; align-items: center; background-color: #f9f9f9; padding: 10px;">
+              <img src="images/SSE-Result-pg1.jpg" alt="SSE Results 2026 - Part 1" style="width: 100%; height: auto; display: block; border-radius: 4px;">
+            </div>
+            <div style="background-color: var(--mvm-green-dark); color: var(--white); padding: 15px; text-align: center; font-family: var(--font-serif); font-size: 1.15rem; font-weight: bold; text-transform: uppercase;">
+              SSE Results (Pg 1) - 2026
+            </div>
+          </div>
+          
+          <div class="result-card" style="background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; display: flex; flex-direction: column;">
+            <div style="flex-grow: 1; display: flex; align-items: center; background-color: #f9f9f9; padding: 10px;">
+              <img src="images/SSE-Result-pg2.jpg" alt="SSE Results 2026 - Part 2" style="width: 100%; height: auto; display: block; border-radius: 4px;">
+            </div>
+            <div style="background-color: var(--mvm-green-dark); color: var(--white); padding: 15px; text-align: center; font-family: var(--font-serif); font-size: 1.15rem; font-weight: bold; text-transform: uppercase;">
+              SSE Results (Pg 2) - 2026
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   </main>
