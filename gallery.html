@@ -265,52 +265,9 @@
     <!-- Event Sidebar and Panels Layout -->
     <section class="section" id="events-grid-section">
       <div class="container">
-        <div class="events-layout">
-          
-          <!-- Left Sidebar -->
-          <div class="events-sidebar">
-            <h3>Events</h3>
-            <ul class="events-list">
-              <li class="event-tab-item active" data-event="kalavarshini">Kalavarshini</li>
-              <li class="event-tab-item" data-event="independence">Independence Day</li>
-            </ul>
-          </div>
-          
-          <!-- Right Content Panel -->
-          <div class="events-content">
-            
-            <!-- Kalavarshini Panel -->
-            <div class="event-panel active" id="panel-kalavarshini">
-              <h2 class="event-title">Kalavarshini</h2>
-              <div class="event-slider-container">
-                <div class="event-gallery-grid">
-                  <div class="event-img-card zoom-image">
-                    <img src="images/kalavarshini1.png" alt="MVM Kalavarshini Cultural Event Dance Performance">
-                  </div>
-                  <div class="event-img-card zoom-image">
-                    <img src="images/kalavarshini2.jpg" alt="MVM Kalavarshini Radha Krishna Celebration">
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Independence Day Panel -->
-            <div class="event-panel" id="panel-independence">
-              <h2 class="event-title">Independence Day</h2>
-              <div class="event-slider-container">
-                <div class="event-gallery-grid">
-                  <div class="event-img-card zoom-image">
-                    <img src="images/independence1.jpg" alt="MVM Independence Day Student Drill Performance">
-                  </div>
-                  <div class="event-img-card zoom-image">
-                    <img src="images/independence2.jpg" alt="MVM Independence Day Stage Celebration Flag Hoisting">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          
+        <!-- Dynamic Gallery Container -->
+        <div id="dynamic-gallery-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+          <!-- Images will be injected here by main.js -->
         </div>
       </div>
     </section>

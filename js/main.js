@@ -474,4 +474,131 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(statsSection);
   }
+
+  // 15. Load Dynamic Content from CMS
+  async function loadDynamicContent() {
+    try {
+      const res = await fetch('/api/content');
+      const data = await res.json();
+      if(data.success) {
+        data.data.forEach(item => {
+          // Update Flash News
+          if(item.section_key === 'flash_news') {
+            const flashEls = document.querySelectorAll('.flash-marquee a');
+            flashEls.forEach(el => el.innerHTML = item.heading);
+          }
+          // Update any generic elements tagged with data-content-key
+          const targetEls = document.querySelectorAll(`[data-content-key="${item.section_key}"]`);
+          targetEls.forEach(el => {
+            el.innerHTML = item.heading;
+          });
+        });
+      }
+    } catch(err) {
+      console.error('Failed to load dynamic content', err);
+    }
+    
+    // Load Dynamic Gallery
+    const galleryContainer = document.getElementById('dynamic-gallery-container');
+    if(galleryContainer) {
+      try {
+        const res = await fetch('/api/gallery');
+        const data = await res.json();
+        if(data.success && data.data.length > 0) {
+          galleryContainer.innerHTML = ''; // clear existing
+          data.data.forEach(img => {
+            const card = document.createElement('div');
+            card.className = 'event-img-card zoom-image';
+            card.innerHTML = `
+              <img src="${img.image_url}" alt="${img.title || 'MVM Gallery Image'}">
+              <div style="padding: 10px; background: white; text-align: center;">
+                <h4 style="margin: 0; color: #232b5d;">${img.title || ''}</h4>
+                <p style="margin: 5px 0 0; font-size: 0.9em; color: #666;">${img.description || ''}</p>
+              </div>
+            `;
+            galleryContainer.appendChild(card);
+          });
+        }
+      } catch(err) {
+        console.error('Failed to load gallery', err);
+      }
+    }
+
+    // Load Specific Page Content
+    const dynamicPageEls = document.querySelectorAll('[data-page-slug]');
+    dynamicPageEls.forEach(async (container) => {
+      const slug = container.getAttribute('data-page-slug');
+      if(slug) {
+        try {
+          const res = await fetch('/api/pages/' + slug);
+          const data = await res.json();
+          if(data.success && data.data && data.data.length > 0) {
+            // Update the page title if it exists (using the first item's title as fallback if needed, but usually we just build the layout)
+            const bannerTitle = document.querySelector('.page-banner h1');
+            if (bannerTitle && data.data[0].title) {
+              // We won't overwrite the banner title unless we want the very first item's title. Let's just keep the original banner title.
+            }
+            
+            // Custom rendering for Syllabus
+            if (slug === 'syllabus') {
+              let tableHtml = `
+                <div style="overflow-x: auto;">
+                  <table class="syllabus-table" style="width: 100%; border-collapse: collapse; box-shadow: var(--shadow-sm); font-family: var(--font-sans); text-align: center;">
+                    <thead>
+                      <tr style="background-color: var(--mvm-green); color: var(--white); font-weight: bold; border: 1px solid var(--mvm-green);">
+                        <th style="padding: 15px; border: 1px solid var(--mvm-green); text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.5px;">S No.</th>
+                        <th style="padding: 15px; border: 1px solid var(--mvm-green); text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.5px;">Primary I to V</th>
+                        <th style="padding: 15px; border: 1px solid var(--mvm-green); text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.5px;">Middle School VI to VIII</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+              `;
+              
+              data.data.forEach((pageData, index) => {
+                const bg = index % 2 === 0 ? 'var(--white)' : '#f9f9f9';
+                tableHtml += `
+                  <tr style="background-color: ${bg}; border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-muted);">${index + 1}</td>
+                    <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">${pageData.title || '&ndash;'}</td>
+                    <td style="padding: 12px; border: 1px solid #e5e7eb; color: var(--text-dark);">${pageData.content_text || '&ndash;'}</td>
+                  </tr>
+                `;
+              });
+              
+              tableHtml += `</tbody></table></div>`;
+              container.innerHTML = tableHtml;
+            } else {
+              let gridHtml = '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding: 20px 0;">';
+              
+              data.data.forEach(pageData => {
+                const contentHtml = pageData.content_text ? `<div style="font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); margin-top: 15px;">${pageData.content_text.replace(/\\n/g, '<br>')}</div>` : '';
+                const imgHtml = pageData.image_url ? `<img src="${pageData.image_url}" alt="${pageData.title}" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--border-radius) var(--border-radius) 0 0;">` : '';
+                const titleHtml = pageData.title ? `<h3 style="color: var(--primary-color); margin-top: 15px; margin-bottom: 5px;">${pageData.title}</h3>` : '';
+                
+                gridHtml += `
+                  <div style="background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow-md); overflow: hidden; display: flex; flex-direction: column;">
+                    ${imgHtml}
+                    <div style="padding: 20px;">
+                      ${titleHtml}
+                      ${contentHtml}
+                    </div>
+                  </div>
+                `;
+              });
+              
+              gridHtml += '</div>';
+              container.innerHTML = gridHtml;
+            }
+          } else {
+            container.innerHTML = '<p style="text-align:center; padding: 40px; color: #888;">Content coming soon...</p>';
+          }
+        } catch(err) {
+          console.error('Failed to load page content for', slug, err);
+        }
+      }
+    });
+
+  }
+  loadDynamicContent();
+
 });
