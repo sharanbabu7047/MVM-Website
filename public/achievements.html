@@ -3,168 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activities and Events | Maharishi Vidya Mandir, Red Hills</title>
-  <meta name="description" content="View photo and media updates from Maharishi Vidya Mandir, Red Hills, Chennai. Discover images from school activities, meditation events, sports, and classrooms.">
+  <title>Achievements | Maharishi Vidya Mandir, Red Hills</title>
+  <meta name="description" content="Discover the student and academic achievements at Maharishi Vidya Mandir, Red Hills, Chennai, including board exam successes, sports cups, and Olympiad ranks.">
   <link rel="stylesheet" href="css/style.css?v=1.6">
-  <link rel="icon" type="image/svg+xml" href="images/logo.png">
+  <link rel="icon" type="image/png" href="images/logo.png">
   <style>
-    /* Event Layout Styles */
-    .events-layout {
+    .achievements-grid {
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 40px;
-      align-items: start;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
     
-    .events-sidebar {
+    .achievement-card {
       background: var(--white);
-      padding: 25px 20px;
-      border-radius: var(--border-radius-lg);
-      box-shadow: var(--shadow-sm);
       border: 1px solid var(--pastel-green);
-    }
-    
-    .events-sidebar h3 {
-      font-size: 1.4rem;
-      color: var(--mvm-green-dark);
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      text-transform: uppercase;
-      font-family: var(--font-serif);
-    }
-    
-    .events-list {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-    
-    .event-tab-item {
-      padding: 12px 10px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      border-bottom: 1px solid var(--border-color);
+      border-radius: var(--border-radius-lg);
+      padding: 30px 25px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
       transition: all 0.3s ease;
-      font-weight: 500;
-    }
-    
-    .event-tab-item:last-child {
-      border-bottom: none;
-    }
-    
-    .event-tab-item:hover {
-      color: var(--mvm-gold-bright);
-      padding-left: 15px;
-    }
-    
-    .event-tab-item.active {
-      color: var(--mvm-gold-bright) !important;
-      font-weight: bold;
-      padding-left: 15px;
-    }
-    
-    .event-tab-item.active::before {
-      content: "• ";
-      color: var(--mvm-gold);
-      font-weight: bold;
-    }
-    
-    .events-content {
-      background: var(--white);
-      padding: 30px;
-      border-radius: var(--border-radius-lg);
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--pastel-green);
-      min-height: 400px;
-    }
-    
-    .event-panel {
-      display: none;
-    }
-    
-    .event-panel.active {
-      display: block;
-      animation: fadeIn 0.4s ease-out;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .event-title {
-      font-size: 1.8rem;
-      color: var(--mvm-green-dark);
-      margin-bottom: 25px;
-      font-family: var(--font-serif);
-      border-bottom: 1px dashed var(--pastel-green);
-      padding-bottom: 10px;
-    }
-    
-    .event-slider-container {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 20px;
-      position: relative;
     }
     
-    .event-gallery-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      width: 100%;
-    }
-    
-    .event-img-card {
-      border: 2px solid #232b5d; /* Dark blue/green border matching the screenshot */
-      border-radius: var(--border-radius);
-      overflow: hidden;
+    .achievement-card:hover {
+      transform: translateY(-5px);
       box-shadow: var(--shadow-md);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      position: relative;
-      aspect-ratio: 4/3;
+      border-color: var(--mvm-gold);
     }
     
-    .event-img-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    
-    .event-img-card:hover img {
-      transform: scale(1.05);
-    }
-    
-    .slider-arrow-btn {
-      background-color: transparent;
-      border: none;
-      color: #232b5d;
-      font-size: 2.5rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
-      padding: 10px;
+    .achievement-icon {
+      background-color: var(--pastel-green-light);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--mvm-green-dark);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
     }
     
-    .slider-arrow-btn:hover {
-      color: var(--mvm-gold);
+    .achievement-card:hover .achievement-icon {
+      background-color: var(--mvm-gold);
+      color: var(--white);
     }
     
-    /* Responsive adjustment */
-    @media (max-width: 900px) {
-      .events-layout {
+    .achievement-card h3 {
+      font-size: 1.3rem;
+      color: var(--mvm-green-dark);
+      margin-bottom: 12px;
+      font-family: var(--font-serif);
+    }
+    
+    .achievement-card p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      margin-top: 30px;
+    }
+    @media (max-width: 992px) {
+      .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .results-grid {
         grid-template-columns: 1fr;
       }
-      .event-gallery-grid {
-        grid-template-columns: 1fr;
-      }
+    }
+    .result-card img {
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+    .result-card:hover img {
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -253,65 +176,19 @@
   </div>
 
   <main id="main-content">
-    <section class="page-banner" id="gallery-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider2.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
+    <section class="page-banner" id="achievements-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider4.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
       <div class="container">
-        <h1>Activities and Events</h1>
-        <div class="breadcrumb">
-          <a href="index.html">Home</a> &gt; Activities and Events
+        <h1 style="color: var(--white); font-size: 2.8rem; margin-bottom: 10px;">Our Achievements</h1>
+        <div class="breadcrumb" style="font-size: 1.05rem;">
+          <a href="index.html" style="color: var(--mvm-gold-bright); text-decoration: none;">Home</a> &gt; <span style="color: var(--white);">Achievements</span>
         </div>
       </div>
     </section>
 
-    <!-- Event Sidebar and Panels Layout -->
-    <section class="section" id="events-grid-section">
+    <!-- Achievements Section -->
+    <section class="section" id="achievements-section" style="background-color: var(--white); min-height: 300px; padding: 60px 0;">
       <div class="container">
-        <div class="events-layout">
-          
-          <!-- Left Sidebar -->
-          <div class="events-sidebar">
-            <h3>Events</h3>
-            <ul class="events-list">
-              <li class="event-tab-item active" data-event="kalavarshini">Kalavarshini</li>
-              <li class="event-tab-item" data-event="independence">Independence Day</li>
-            </ul>
-          </div>
-          
-          <!-- Right Content Panel -->
-          <div class="events-content">
-            
-            <!-- Kalavarshini Panel -->
-            <div class="event-panel active" id="panel-kalavarshini">
-              <h2 class="event-title">Kalavarshini</h2>
-              <div class="event-slider-container">
-                <div class="event-gallery-grid">
-                  <div class="event-img-card zoom-image">
-                    <img src="images/kalavarshini1.png" alt="MVM Kalavarshini Cultural Event Dance Performance">
-                  </div>
-                  <div class="event-img-card zoom-image">
-                    <img src="images/kalavarshini2.jpg" alt="MVM Kalavarshini Radha Krishna Celebration">
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Independence Day Panel -->
-            <div class="event-panel" id="panel-independence">
-              <h2 class="event-title">Independence Day</h2>
-              <div class="event-slider-container">
-                <div class="event-gallery-grid">
-                  <div class="event-img-card zoom-image">
-                    <img src="images/independence1.jpg" alt="MVM Independence Day Student Drill Performance">
-                  </div>
-                  <div class="event-img-card zoom-image">
-                    <img src="images/independence2.jpg" alt="MVM Independence Day Stage Celebration Flag Hoisting">
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          
-        </div>
+        <div id="dynamic-page-content" data-page-slug="achievements"></div>
       </div>
     </section>
   </main>
@@ -387,84 +264,50 @@
 
   <script src="js/main.js"></script>
   <script>
-    // Tab Interaction Logic for Events Page
     document.addEventListener('DOMContentLoaded', () => {
-      const tabItems = document.querySelectorAll('.event-tab-item');
-      const panels = document.querySelectorAll('.event-panel');
-      
-      tabItems.forEach(item => {
-        item.addEventListener('click', () => {
-          // Remove active class from all tabs & panels
-          tabItems.forEach(t => t.classList.remove('active'));
-          panels.forEach(p => p.classList.remove('active'));
-          
-          // Add active class to clicked tab
-          item.classList.add('active');
-          
-          // Show the corresponding panel
-          const eventId = item.getAttribute('data-event');
-          const activePanel = document.getElementById(`panel-${eventId}`);
-          if (activePanel) {
-            activePanel.classList.add('active');
-          }
-        });
-      });
-      
-      // Lightbox logic specific to event-img-card zoom
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightbox-img');
       const lightboxClose = document.getElementById('lightbox-close');
       const lightboxPrev = document.getElementById('lightbox-prev');
       const lightboxNext = document.getElementById('lightbox-next');
       
-      let activePanelImages = [];
-      let currentPanelIdx = 0;
+      let allImages = [];
+      let currentIndex = 0;
       
-      const imgCards = document.querySelectorAll('.event-img-card img');
-      imgCards.forEach(img => {
+      const imgCards = document.querySelectorAll('.result-card img');
+      imgCards.forEach((img, idx) => {
+        allImages.push(img.src);
         img.addEventListener('click', () => {
-          // Find all images in the active panel
-          const activePanel = img.closest('.event-panel');
-          const panelImgs = activePanel.querySelectorAll('.event-img-card img');
-          
-          activePanelImages = [];
-          panelImgs.forEach((pImg, idx) => {
-            activePanelImages.push(pImg.src);
-            if (pImg === img) {
-              currentPanelIdx = idx;
-            }
-          });
-          
-          showPanelLightbox(currentPanelIdx);
+          currentIndex = idx;
+          showLightbox(currentIndex);
         });
       });
       
-      function showPanelLightbox(idx) {
-        if (activePanelImages.length > 0) {
-          lightboxImg.src = activePanelImages[idx];
+      function showLightbox(idx) {
+        if (allImages.length > 0) {
+          lightboxImg.src = allImages[idx];
           lightbox.classList.add('active');
         }
       }
       
       if (lightboxClose) {
-        lightboxClose.addEventListener('click', () => {
-          lightbox.classList.remove('active');
-        });
+        lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
       }
-      
       if (lightboxPrev) {
         lightboxPrev.addEventListener('click', () => {
-          currentPanelIdx = (currentPanelIdx - 1 + activePanelImages.length) % activePanelImages.length;
-          showPanelLightbox(currentPanelIdx);
+          currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+          showLightbox(currentIndex);
         });
       }
-      
       if (lightboxNext) {
         lightboxNext.addEventListener('click', () => {
-          currentPanelIdx = (currentPanelIdx + 1) % activePanelImages.length;
-          showPanelLightbox(currentPanelIdx);
+          currentIndex = (currentIndex + 1) % allImages.length;
+          showLightbox(currentIndex);
         });
       }
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) lightbox.classList.remove('active');
+      });
     });
   </script>
 </body>

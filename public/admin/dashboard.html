@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - MVM Website</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <div class="sidebar">
+      <h2>MVM Admin</h2>
+      <ul>
+        <li data-tab="tab-pages" class="active">Manage Pages</li>
+        <li data-tab="tab-gallery">Activities & Events</li>
+        <li data-tab="tab-settings">Settings</li>
+      </ul>
+    </div>
+    
+    <div class="main-content">
+      <div class="header-top">
+        <h1>Dashboard</h1>
+        <button id="logout-btn" class="btn-danger">Logout</button>
+      </div>
+
+      <!-- Tab: Pages -->
+      <div id="tab-pages" class="tab-pane active">
+        <div class="card">
+          <h3>Manage Specific Pages</h3>
+          <p>Update the text and main photo for various pages (e.g., Quiz Club, Admissions).</p>
+          <form id="pages-form">
+            <select id="page_slug" class="form-control" required>
+              <option value="">-- Select a Page --</option>
+              <option value="syllabus">Syllabus</option>
+              <option value="quiz-club">Quiz Club</option>
+              <option value="book-club">Book Club</option>
+              <option value="learning-by-doing">Learning by Doing</option>
+              <option value="competitions">Competitions</option>
+              <option value="extra-curricular">Extra Curricular</option>
+              <option value="after-school">After School Activities</option>
+              <option value="admissions">Admissions</option>
+              <option value="achievements">Achievements</option>
+            </select>
+            <input type="text" id="page_title" class="form-control" placeholder="Page Main Title">
+            <textarea id="page_content_text" class="form-control" placeholder="Page Content (Text/Paragraphs)" rows="8"></textarea>
+            <label style="display:block; margin: 10px 0 5px; color:#666;">Page Image (Optional)</label>
+            <input type="file" id="page_image" class="form-control" accept="image/*">
+            
+            <div id="page_current_image_preview" style="margin-bottom: 10px;"></div>
+
+            <button type="submit" class="btn" id="page-update-btn">Add New Item</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Existing Page Items</h3>
+          <div id="pages-list">Select a page above to see its items.</div>
+        </div>
+      </div>
+
+      <!-- Tab: Activities & Events -->
+      <div id="tab-gallery" class="tab-pane">
+        <div class="card">
+          <h3>Upload New Event / Activity</h3>
+          <form id="gallery-form">
+            <input type="text" id="gallery_title" class="form-control" placeholder="Event Title">
+            <input type="text" id="gallery_desc" class="form-control" placeholder="Description or Date">
+            <input type="file" id="gallery_image" class="form-control" accept="image/*" required>
+            <button type="submit" class="btn" id="gallery-upload-btn">Upload</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Existing Activities & Events</h3>
+          <div id="gallery-list"></div>
+        </div>
+      </div>
+
+      <!-- Tab: Settings (Change Password) -->
+      <div id="tab-settings" class="tab-pane">
+        <div class="card" style="max-width: 500px;">
+          <h3>Change Admin Password</h3>
+          <form id="change-password-form">
+            <label style="display:block; margin: 10px 0 5px; color:#666;">New Password</label>
+            <input type="password" id="new_password" class="form-control" required minlength="6" placeholder="Enter new password">
+            
+            <label style="display:block; margin: 10px 0 5px; color:#666;">Confirm New Password</label>
+            <input type="password" id="confirm_new_password" class="form-control" required minlength="6" placeholder="Confirm new password">
+            
+            <button type="submit" class="btn" style="margin-top: 15px;" id="change-password-btn">Update Password</button>
+          </form>
+          <div id="password-msg" style="margin-top: 15px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="js/admin.js"></script>
+</body>
+</html>

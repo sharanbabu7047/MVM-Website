@@ -3,10 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Competitions | Maharishi Vidya Mandir, Red Hills</title>
-  <meta name="description" content="Read about the internal, inter-school, and regional competitions participated in and hosted by Maharishi Vidya Mandir, Red Hills, Chennai.">
+  <title>Learning by Doing | Maharishi Vidya Mandir, Red Hills</title>
+  <meta name="description" content="Discover the Learning by Doing programs at Maharishi Vidya Mandir, Red Hills, Chennai, featuring Biology, Chemistry, and Physics Lab facilities for hands-on scientific learning.">
   <link rel="stylesheet" href="css/style.css?v=1.6">
   <link rel="icon" type="image/png" href="images/logo.png">
+  <style>
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .lab-card {
+      text-decoration: none;
+      display: block;
+      background: var(--white);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 3px solid var(--pastel-green);
+    }
+    .lab-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--mvm-gold);
+    }
+    .lab-card:hover img {
+      transform: scale(1.06);
+    }
+    .lab-image-wrapper {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    .lab-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .lab-title-block {
+      background-color: var(--mvm-green-dark);
+      padding: 18px 10px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .lab-card:hover .lab-title-block {
+      background-color: var(--mvm-green);
+    }
+    .lab-title-block h3 {
+      color: var(--white);
+      font-size: 1.35rem;
+      font-weight: bold;
+      margin: 0;
+      font-family: var(--font-serif);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 992px) {
+      .learning-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .learning-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Chetpet Master Header Format -->
@@ -60,7 +125,7 @@
             <li><a href="academics.html">Syllabus</a></li>
             <li><a href="quiz-club.html">Quiz Club</a></li>
             <li><a href="book-club.html">Book Club</a></li>
-            <li><a href="learning-by-doing.html">Learning by Doing</a></li>
+            <li><a href="learning-by-doing.html" class="active">Learning by Doing</a></li>
             <li><a href="competitions.html">Competitions</a></li>
             <li><a href="achievements.html">Achievements</a></li>
           </ul>
@@ -93,19 +158,27 @@
   </div>
 
   <main id="main-content">
-    <section class="page-banner" id="competitions-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider3.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
+    <section class="page-banner" id="learning-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider4.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
       <div class="container">
-        <h1 style="color: var(--white); font-size: 2.8rem; margin-bottom: 10px;">Competitions</h1>
+        <h1 style="color: var(--white); font-size: 2.8rem; margin-bottom: 10px;">Learning by Doing</h1>
         <div class="breadcrumb" style="font-size: 1.05rem;">
-          <a href="index.html" style="color: var(--mvm-gold-bright); text-decoration: none;">Home</a> &gt; <span style="color: var(--white);">Competitions</span>
+          <a href="index.html" style="color: var(--mvm-gold-bright); text-decoration: none;">Home</a> &gt; <a href="#" style="color: var(--mvm-gold-bright); text-decoration: none;">Scholastic</a> &gt; <span style="color: var(--white);">Learning by Doing</span>
         </div>
       </div>
     </section>
 
-    <!-- Competitions Section -->
-    <section class="section" id="competitions-section" style="background-color: var(--white); min-height: 300px;">
+    <!-- Learning by Doing Section -->
+    <section class="section" id="learning-section" style="background-color: var(--mvm-cream); padding: 60px 0;">
       <div class="container">
-        <!-- Content intentionally left empty to match template placeholder layout -->
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+          <span class="subtitle" style="color: var(--mvm-gold); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Scientific Abstractions</span>
+          <h2 style="margin-top: 5px; color: var(--mvm-green-dark);">Our Laboratory Facilities</h2>
+          <p style="max-width: 700px; margin: 10px auto 0; color: var(--text-muted);">
+            Practical knowledge is a fundamental part of the curriculum at Maharishi Vidya Mandir. Our students explore the sciences through hands-on experimentation in our state-of-the-art laboratory facilities.
+          </p>
+        </div>
+
+        <div id="dynamic-page-content" data-page-slug="learning-by-doing"></div>
       </div>
     </section>
   </main>
@@ -158,7 +231,7 @@
         <p>Office Timings: 8.00 AM to 5.00 PM</p>
         <div class="social-links">
           <a href="https://www.instagram.com/mvmredhills?igsh=MXhzZWFreXAyaGRkNw==" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.01 3.796.056 1.03.047 1.77.213 2.4.459a4.802 4.802 0 011.722 1.12 4.803 4.803 0 011.12 1.722c.245.63.412 1.37.459 2.4.047 1.012.056 1.366.056 3.796s-.01 2.784-.056 3.796c-.047 1.03-.213 1.77-.459 2.4a4.803 4.803 0 01-1.12 1.722 4.802 4.802 0 01-1.722 1.12c-.63.245-1.37.412-2.4.459-1.012.047-1.366.056-3.796.056s-2.784-.01-3.796-.056c-1.03-.047-1.77-.213-2.4-.459a4.802 4.802 0 01-1.722-1.12 4.802 4.802 0 01-1.12-1.722c-.245-.63-.412-1.37-.459-2.4C2.01 14.814 2 14.46 2 12.03s.01-2.784.056-3.796c.047-1.03.213-1.77.459-2.4a4.803 4.803 0 011.12-1.722 4.802 4.802 0 011.722-1.12c.63-.245 1.37-.412 2.4-.459C9.25 2.01 9.604 2 12.03 2h.285zm-1.16 2.228H12.03c2.392 0 2.71.008 3.655.051.874.04 1.347.186 1.662.308.418.163.714.356 1.03.671.314.316.508.612.67 1.03.123.315.269.788.31 1.662.043.945.05 1.263.05 3.655s-.007 2.71-.05 3.655c-.041.874-.187 1.347-.31 1.662-.162.418-.356.714-.67 1.03-.316.314-.612.508-1.03.67-.315.123-.788.269-1.662.31-.945.043-1.263.05-3.655.05s-2.71-.007-3.655-.05c-.874-.041-1.347-.187-1.662-.31a3.486 3.486 0 01-1.03-.67 3.487 3.487 0 01-.67-1.03c-.123-.315-.269-.788-.31-1.662C4.008 14.74 4 14.422 4 12.03s.008-2.71.051-3.655c.04-.874.186-1.347.308-1.662.163-.418.356-.714.671-1.03.316-.314.612-.508 1.03-.67.315-.123.788-.269 1.662-.31.945-.043 1.263-.05 3.655-.05zm4.869 1.956a1.125 1.125 0 110 2.25 1.125 1.125 0 010-2.25zM12 8a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"></path></svg>
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.01 3.796.056 1.03.047 1.77.213 2.4.459a4.802 4.802 0 011.722 1.12 4.803 4.803 0 011.12 1.722c.245.63.412 1.37.459 2.4.047 1.012.056 1.366.056 3.796s-.01 2.784-.056 3.796c-.047 1.03-.213 1.77-.459 2.4a4.803 4.803 0 01-1.12 1.722 4.802 4.802 0 01-1.722 1.12c-.63.245-1.37.412-2.4.459-1.012.047-1.366.056-3.796.056s-2.784-.01-3.796-.056c-1.03-.047-1.77-.213-2.4-.459a4.802 4.802 0 01-1.722-1.12 4.802 4.802 0 01-1.12-1.722c-.245-.63-.412-1.37-.459-2.4C2.01 14.814 2 14.46 2 12.03s.01-2.784.056-3.796c.047-1.03.213-1.77.459-2.4a4.803 4.803 0 011.12-1.722 4.802 4.802 0 011.722-1.12c.63-.245 1.37-.412-2.4.459C9.25 2.01 9.604 2 12.03 2h.285zm-1.16 2.228H12.03c2.392 0 2.71.008 3.655.051.874.04 1.347.186 1.662.308.418.163.714.356 1.03.671.314.316.508.612.67 1.03.123.315.269.788.31 1.662.043.945.05 1.263.05 3.655s-.007 2.71-.05 3.655c-.041.874-.187 1.347-.31 1.662-.162.418-.356.714-.67 1.03-.316.314-.612.508-1.03.67-.315.123-.788.269-1.662.31-.945.043-1.263.05-3.655.05s-2.71-.007-3.655-.05c-.874-.041-1.347-.187-1.662-.31a3.486 3.486 0 01-1.03-.67 3.487 3.487 0 01-.67-1.03c-.123-.315-.269-.788-.31-1.662C4.008 14.74 4 14.422 4 12.03s.008-2.71.051-3.655c.04-.874.186-1.347.308-1.662.163-.418.356-.714.671-1.03.316-.314.612-.508 1.03-.67.315-.123.788-.269 1.662-.31.945-.043 1.263-.05 3.655-.05zm4.869 1.956a1.125 1.125 0 110 2.25 1.125 1.125 0 010-2.25zM12 8a4 4 0 100 8 4 4 0 000-8z" clip-rule="evenodd"></path></svg>
           </a>
 
         </div>

@@ -3,82 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Achievements | Maharishi Vidya Mandir, Red Hills</title>
-  <meta name="description" content="Discover the student and academic achievements at Maharishi Vidya Mandir, Red Hills, Chennai, including board exam successes, sports cups, and Olympiad ranks.">
+  <title>Activities and Events | Maharishi Vidya Mandir, Red Hills</title>
+  <meta name="description" content="View photo and media updates from Maharishi Vidya Mandir, Red Hills, Chennai. Discover images from school activities, meditation events, sports, and classrooms.">
   <link rel="stylesheet" href="css/style.css?v=1.6">
-  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="icon" type="image/svg+xml" href="images/logo.png">
   <style>
-    .achievements-grid {
+    /* Event Layout Styles */
+    .events-layout {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-top: 20px;
     }
     
-    .achievement-card {
+    .events-sidebar {
       background: var(--white);
-      border: 1px solid var(--pastel-green);
+      padding: 25px 20px;
       border-radius: var(--border-radius-lg);
-      padding: 30px 25px;
-      text-align: center;
       box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      border: 1px solid var(--pastel-green);
     }
     
-    .achievement-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--mvm-gold);
-    }
-    
-    .achievement-icon {
-      background-color: var(--pastel-green-light);
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .events-sidebar h3 {
+      font-size: 1.4rem;
       color: var(--mvm-green-dark);
       margin-bottom: 20px;
-      transition: all 0.3s ease;
-    }
-    
-    .achievement-card:hover .achievement-icon {
-      background-color: var(--mvm-gold);
-      color: var(--white);
-    }
-    
-    .achievement-card h3 {
-      font-size: 1.3rem;
-      color: var(--mvm-green-dark);
-      margin-bottom: 12px;
+      padding-bottom: 10px;
+      text-transform: uppercase;
       font-family: var(--font-serif);
     }
     
-    .achievement-card p {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      line-height: 1.6;
+    .events-list {
+      padding: 0;
       margin: 0;
+      list-style: none;
     }
-
-    .results-grid {
+    
+    .event-tab-item {
+      padding: 12px 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .event-tab-item:last-child {
+      border-bottom: none;
+    }
+    
+    .event-tab-item:hover {
+      color: var(--mvm-gold-bright);
+      padding-left: 15px;
+    }
+    
+    .event-tab-item.active {
+      color: var(--mvm-gold-bright) !important;
+      font-weight: bold;
+      padding-left: 15px;
+    }
+    
+    .event-tab-item.active::before {
+      content: "• ";
+      color: var(--mvm-gold);
+      font-weight: bold;
+    }
+    
+    .events-content {
+      background: var(--white);
+      padding: 30px;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--pastel-green);
+      min-height: 400px;
+    }
+    
+    .event-panel {
+      display: none;
+    }
+    
+    .event-panel.active {
+      display: block;
+      animation: fadeIn 0.4s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .event-title {
+      font-size: 1.8rem;
+      color: var(--mvm-green-dark);
+      margin-bottom: 25px;
+      font-family: var(--font-serif);
+      border-bottom: 1px dashed var(--pastel-green);
+      padding-bottom: 10px;
+    }
+    
+    .event-slider-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+    
+    .event-gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-      margin-top: 30px;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
     }
-    @media (max-width: 992px) {
-      .results-grid {
-        grid-template-columns: repeat(2, 1fr);
+    
+    .event-img-card {
+      border: 2px solid #232b5d; /* Dark blue/green border matching the screenshot */
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+    
+    .event-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .event-img-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .slider-arrow-btn {
+      background-color: transparent;
+      border: none;
+      color: #232b5d;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .slider-arrow-btn:hover {
+      color: var(--mvm-gold);
+    }
+    
+    /* Responsive adjustment */
+    @media (max-width: 900px) {
+      .events-layout {
+        grid-template-columns: 1fr;
       }
-    }
-    @media (max-width: 600px) {
-      .results-grid {
+      .event-gallery-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -169,65 +253,35 @@
   </div>
 
   <main id="main-content">
-    <section class="page-banner" id="achievements-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider4.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
+    <section class="page-banner" id="gallery-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider2.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
       <div class="container">
-        <h1 style="color: var(--white); font-size: 2.8rem; margin-bottom: 10px;">Our Achievements</h1>
-        <div class="breadcrumb" style="font-size: 1.05rem;">
-          <a href="index.html" style="color: var(--mvm-gold-bright); text-decoration: none;">Home</a> &gt; <span style="color: var(--white);">Achievements</span>
+        <h1>Activities and Events</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> &gt; Activities and Events
         </div>
       </div>
     </section>
 
-    <!-- Achievements Section -->
-    <section class="section" id="achievements-section" style="background-color: var(--white); min-height: 300px; padding: 60px 0;">
+    <!-- Event Sidebar and Panels Layout -->
+    <section class="section" id="events-grid-section">
       <div class="container">
-        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
-          <h2 style="color: var(--mvm-green-dark);">Outstanding Results 2026</h2>
-          <p style="color: var(--text-muted);">Celebrating the Remarkable Achievements of Our Students</p>
-        </div>
-        
-        <div class="results-grid">
-          
-          <div class="result-card" style="background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; display: flex; flex-direction: column;">
-            <div style="flex-grow: 1; display: flex; align-items: center; background-color: #f9f9f9; padding: 10px;">
-              <img src="images/jee.jpg" alt="JEE Advanced 2026 Results" style="width: 100%; height: auto; display: block; border-radius: 4px;">
-            </div>
-            <div style="background-color: var(--mvm-green-dark); color: var(--white); padding: 15px; text-align: center; font-family: var(--font-serif); font-size: 1.15rem; font-weight: bold; text-transform: uppercase;">
-              JEE Advanced - 2026
-            </div>
-          </div>
-          
-          <div class="result-card" style="background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; display: flex; flex-direction: column;">
-            <div style="flex-grow: 1; display: flex; align-items: center; background-color: #f9f9f9; padding: 10px;">
-              <img src="images/XII-MVM-Results-pg2-2026.jpg" alt="SSCE Results 2026" style="width: 100%; height: auto; display: block; border-radius: 4px;">
-            </div>
-            <div style="background-color: var(--mvm-green-dark); color: var(--white); padding: 15px; text-align: center; font-family: var(--font-serif); font-size: 1.15rem; font-weight: bold; text-transform: uppercase;">
-              SSCE Results - 2026
-            </div>
-          </div>
-          
-          <div class="result-card" style="background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; display: flex; flex-direction: column;">
-            <div style="flex-grow: 1; display: flex; align-items: center; background-color: #f9f9f9; padding: 10px;">
-              <img src="images/SSE-Result-pg1.jpg" alt="SSE Results 2026 - Part 1" style="width: 100%; height: auto; display: block; border-radius: 4px;">
-            </div>
-            <div style="background-color: var(--mvm-green-dark); color: var(--white); padding: 15px; text-align: center; font-family: var(--font-serif); font-size: 1.15rem; font-weight: bold; text-transform: uppercase;">
-              SSE Results (Pg 1) - 2026
-            </div>
-          </div>
-          
-          <div class="result-card" style="background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; display: flex; flex-direction: column;">
-            <div style="flex-grow: 1; display: flex; align-items: center; background-color: #f9f9f9; padding: 10px;">
-              <img src="images/SSE-Result-pg2.jpg" alt="SSE Results 2026 - Part 2" style="width: 100%; height: auto; display: block; border-radius: 4px;">
-            </div>
-            <div style="background-color: var(--mvm-green-dark); color: var(--white); padding: 15px; text-align: center; font-family: var(--font-serif); font-size: 1.15rem; font-weight: bold; text-transform: uppercase;">
-              SSE Results (Pg 2) - 2026
-            </div>
-          </div>
-
+        <!-- Dynamic Gallery Container -->
+        <div id="dynamic-gallery-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+          <!-- Images will be injected here by main.js -->
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Lightbox Modal container -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+      <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous Photo">&#10094;</button>
+      <img src="" alt="Fullscreen Lightbox Image" id="lightbox-img">
+      <button class="lightbox-next" id="lightbox-next" aria-label="Next Photo">&#10095;</button>
+    </div>
+  </div>
 
   <!-- Footer Section -->
   <footer id="site-footer">
@@ -289,5 +343,86 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Tab Interaction Logic for Events Page
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabItems = document.querySelectorAll('.event-tab-item');
+      const panels = document.querySelectorAll('.event-panel');
+      
+      tabItems.forEach(item => {
+        item.addEventListener('click', () => {
+          // Remove active class from all tabs & panels
+          tabItems.forEach(t => t.classList.remove('active'));
+          panels.forEach(p => p.classList.remove('active'));
+          
+          // Add active class to clicked tab
+          item.classList.add('active');
+          
+          // Show the corresponding panel
+          const eventId = item.getAttribute('data-event');
+          const activePanel = document.getElementById(`panel-${eventId}`);
+          if (activePanel) {
+            activePanel.classList.add('active');
+          }
+        });
+      });
+      
+      // Lightbox logic specific to event-img-card zoom
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      const lightboxPrev = document.getElementById('lightbox-prev');
+      const lightboxNext = document.getElementById('lightbox-next');
+      
+      let activePanelImages = [];
+      let currentPanelIdx = 0;
+      
+      const imgCards = document.querySelectorAll('.event-img-card img');
+      imgCards.forEach(img => {
+        img.addEventListener('click', () => {
+          // Find all images in the active panel
+          const activePanel = img.closest('.event-panel');
+          const panelImgs = activePanel.querySelectorAll('.event-img-card img');
+          
+          activePanelImages = [];
+          panelImgs.forEach((pImg, idx) => {
+            activePanelImages.push(pImg.src);
+            if (pImg === img) {
+              currentPanelIdx = idx;
+            }
+          });
+          
+          showPanelLightbox(currentPanelIdx);
+        });
+      });
+      
+      function showPanelLightbox(idx) {
+        if (activePanelImages.length > 0) {
+          lightboxImg.src = activePanelImages[idx];
+          lightbox.classList.add('active');
+        }
+      }
+      
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', () => {
+          lightbox.classList.remove('active');
+        });
+      }
+      
+      if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', () => {
+          currentPanelIdx = (currentPanelIdx - 1 + activePanelImages.length) % activePanelImages.length;
+          showPanelLightbox(currentPanelIdx);
+        });
+      }
+      
+      if (lightboxNext) {
+        lightboxNext.addEventListener('click', () => {
+          currentPanelIdx = (currentPanelIdx + 1) % activePanelImages.length;
+          showPanelLightbox(currentPanelIdx);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

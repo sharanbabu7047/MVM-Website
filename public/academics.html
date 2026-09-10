@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admissions | Maharishi Vidya Mandir, Red Hills</title>
-  <meta name="description" content="Admission guidelines and online enquiry for Maharishi Vidya Mandir, Red Hills, Chennai. Offer classes from Kindergarten up to Class VII under CBSE curriculum.">
+  <title>Academics | Maharishi Vidya Mandir, Red Hills</title>
+  <meta name="description" content="Explore the academics programs at Maharishi Vidya Mandir, Red Hills, Chennai. Discover our CBSE curriculum, syllabus guides, and co-curricular programs.">
   <link rel="stylesheet" href="css/style.css?v=1.6">
   <link rel="icon" type="image/svg+xml" href="images/logo.png">
 </head>
@@ -94,107 +94,21 @@
   </div>
 
   <main id="main-content">
-    <section class="page-banner" id="admissions-banner">
+    <section class="page-banner" id="academics-banner" style="background: linear-gradient(rgba(12, 111, 55, 0.85), rgba(12, 111, 55, 0.85)), url('images/slider4.png') no-repeat center center; background-size: cover; padding: 60px 0; text-align: center; color: var(--white);">
       <div class="container">
-        <h1>Admission Guidelines</h1>
-        <div class="breadcrumb">
-          <a href="index.html">Home</a> &gt; Admissions
+        <h1 style="color: var(--white); font-size: 2.8rem; margin-bottom: 10px;">Syllabus</h1>
+        <div class="breadcrumb" style="font-size: 1.05rem;">
+          <a href="index.html" style="color: var(--mvm-gold-bright); text-decoration: none;">Home</a> &gt; <span style="color: var(--white);">Syllabus</span>
         </div>
       </div>
     </section>
 
-    <!-- Admission details and Form Grid -->
-    <section class="section" id="admission-info-section">
-      <div class="container">
-        <div class="grid-2">
-          <!-- Text and guidelines -->
-          <div>
-            <span class="hero-motto" style="color:var(--accent); font-weight:bold;">Enrollment Guidelines</span>
-            <h2 style="margin-top:10px; margin-bottom:20px;">Admission Policy & Process</h2>
-            <p style="margin-bottom:20px;">Admissions at Maharishi Vidya Mandir, Red Hills, are open to all qualifying students subject to seat availability. We nurture a diverse and inclusive learning community following the standard CBSE parameters.</p>
-            
-            <h3 style="font-size:1.3rem; margin-bottom:12px; margin-top:30px;">Eligible Grades</h3>
-            <p style="margin-bottom:20px;">For the current academic year, applications are accepted for the following grades:</p>
-            <ul style="padding-left:20px; margin-bottom:24px; color:var(--text-muted);">
-              <li style="margin-bottom:8px;">Kindergarten (LKG & UKG)</li>
-              <li style="margin-bottom:8px;">Primary Classes (Class I to Class V)</li>
-              <li style="margin-bottom:8px;">Middle School Foundation (Class VI to Class VII)</li>
-            </ul>
-
-            <h3 style="font-size:1.3rem; margin-bottom:12px;">Enquiry Procedure</h3>
-            <ol style="padding-left:20px; color:var(--text-muted); line-height:1.7;">
-              <li style="margin-bottom:10px;">Fill out the <strong>Admission Enquiry Form</strong> on the right.</li>
-              <li style="margin-bottom:10px;">Our administrative department will review your enquiry details and get in touch with you via email or phone.</li>
-              <li style="margin-bottom:10px;">An interactive session/school tour will be scheduled for parents and the student.</li>
-              <li style="margin-bottom:10px;">Formal document verification and final fee payments complete the enrollment process.</li>
-            </ol>
-          </div>
-
-          <!-- Enquiry Form container -->
-          <div>
-            <div class="form-card" id="enquiry-form-container">
-              <h3 style="margin-bottom:10px; font-size:1.6rem;">Admission Enquiry Form</h3>
-              <p style="margin-bottom:24px; font-size:0.9rem;">Fill in the details below. Our admissions coordinator will reach out shortly.</p>
-              
-              <!-- Form submission handled via AJAX in main.js -->
-              <form id="admission-enquiry-form" novalidate>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="student_name">Student Name *</label>
-                    <input type="text" id="student_name" name="student_name" class="form-control" placeholder="Full name of student" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="dob">Date of Birth *</label>
-                    <input type="date" id="dob" name="dob" class="form-control" required>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="grade_interest">Grade of Interest *</label>
-                    <select id="grade_interest" name="grade_interest" class="form-control" required>
-                      <option value="" disabled selected>Select class</option>
-                      <option value="LKG">LKG</option>
-                      <option value="UKG">UKG</option>
-                      <option value="Class I">Class I</option>
-                      <option value="Class II">Class II</option>
-                      <option value="Class III">Class III</option>
-                      <option value="Class IV">Class IV</option>
-                      <option value="Class V">Class V</option>
-                      <option value="Class VI">Class VI</option>
-                      <option value="Class VII">Class VII</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="parent_name">Parent/Guardian Name *</label>
-                    <input type="text" id="parent_name" name="parent_name" class="form-control" placeholder="Guardian's name" required>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="10-digit mobile number" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="example@email.com" required>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="message">Additional Message / Queries</label>
-                  <textarea id="message" name="message" class="form-control" rows="3" placeholder="Tell us about your child or ask any questions..."></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width:100%; padding:14px;" id="enquiry-submit-btn">Submit Enquiry</button>
-              </form>
-            </div>
-          </div>
-        </div>
+    <!-- Syllabus Table Section -->
+    <section class="section" id="syllabus-table-section" style="background-color: var(--white); padding: 60px 0;">
+      <div class="container" style="max-width: 900px;">
+        <div id="dynamic-page-content" data-page-slug="syllabus"></div>
       </div>
     </section>
-
   </main>
 
   <!-- Footer Section -->
