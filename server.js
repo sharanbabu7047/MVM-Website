@@ -383,7 +383,7 @@ app.delete('/api/admin/pages/:id', authenticateAdmin, async (req, res) => {
 });
 
 // Fallback route to serve index.html for unknown routes (useful for SPA, though this is a multi-page site)
-app.get('*', (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
