@@ -110,15 +110,15 @@ document.addEventListener('DOMContentLoaded', () => {
             data.data.forEach(item => {
               const imgHtml = item.image_url ? `<img src="${item.image_url}" style="width:100px; height:100px; object-fit:cover; border-radius:4px;">` : '';
               list.innerHTML += `
-                <div style="border:1px solid #ddd; margin-bottom:10px; padding:10px; display:flex; justify-content:space-between; align-items:center;">
-                  <div style="display:flex; gap:15px; align-items:center;">
+                <div class="list-item">
+                  <div class="list-item-content">
                     ${imgHtml}
-                    <div>
+                    <div class="list-item-text">
                       <strong>${item.title || 'No Title'}</strong>
-                      <p style="margin:5px 0 0; font-size:0.9em; max-width:300px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${item.content_text || ''}</p>
+                      <p title="${item.content_text ? item.content_text.replace(/"/g, '&quot;') : ''}">${item.content_text || ''}</p>
                     </div>
                   </div>
-                  <button class="btn delete-page-item" data-id="${item.id}" style="background:#e74c3c;">Delete</button>
+                  <button class="btn-danger delete-page-item" data-id="${item.id}">Delete</button>
                 </div>
               `;
             });
@@ -151,11 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
               document.getElementById('page_content_text').placeholder = 'Middle School VI to VIII Subject (e.g., Science)';
               document.getElementById('page_image').style.display = 'none';
               document.getElementById('page_image').previousElementSibling.style.display = 'none'; // hide the label
+              document.getElementById('page_image').removeAttribute('required');
             } else {
               document.getElementById('page_title').placeholder = 'Page Main Title';
               document.getElementById('page_content_text').placeholder = 'Page Content (Text/Paragraphs)';
               document.getElementById('page_image').style.display = 'block';
               document.getElementById('page_image').previousElementSibling.style.display = 'block';
+              document.getElementById('page_image').setAttribute('required', 'true');
             }
 
           } else {
@@ -221,11 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const div = document.createElement('div');
       div.className = 'list-item';
       div.innerHTML = `
-        <div style="display:flex; align-items:center; gap:10px;">
+        <div class="list-item-content">
           <img src="${img.image_url}" alt="img">
-          <div>
-            <strong>${img.title}</strong><br>
-            <small>${img.description}</small>
+          <div class="list-item-text">
+            <strong>${img.title}</strong>
+            <p title="${img.description ? img.description.replace(/"/g, '&quot;') : ''}">${img.description || ''}</p>
           </div>
         </div>
         <button class="btn-danger" onclick="deleteGallery(${img.id})">Delete</button>
