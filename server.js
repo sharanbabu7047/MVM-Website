@@ -258,12 +258,32 @@ app.post('/api/admin/gallery', authenticateAdmin, upload.single('image'), async 
   }
 });
 
+// Helper to extract Cloudinary public ID from URL
+const extractPublicId = (url) => {
+  if (!url) return null;
+  try {
+    const parts = url.split('/');
+    const uploadIndex = parts.indexOf('upload');
+    if (uploadIndex === -1) return null;
+    const pathAfterVersion = parts.slice(uploadIndex + 2).join('/');
+    return pathAfterVersion.substring(0, pathAfterVersion.lastIndexOf('.'));
+  } catch (e) {
+    return null;
+  }
+};
+
 // Delete gallery image
 app.delete('/api/admin/gallery/:id', authenticateAdmin, async (req, res) => {
   try {
+    const itemRes = await pool.query('SELECT image_url FROM gallery_images WHERE id = $1', [req.params.id]);
+    if (itemRes.rows.length > 0 && itemRes.rows[0].image_url) {
+      const publicId = extractPublicId(itemRes.rows[0].image_url);
+      if (publicId) await cloudinary.uploader.destroy(publicId).catch(err => console.error('Cloudinary delete error:', err));
+    }
     await pool.query('DELETE FROM gallery_images WHERE id = $1', [req.params.id]);
     res.json({ success: true, message: 'Image deleted' });
   } catch (error) {
+    console.error('Gallery delete error:', error);
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });
@@ -308,9 +328,15 @@ app.post('/api/admin/activities', authenticateAdmin, upload.single('image'), asy
 // Delete activity
 app.delete('/api/admin/activities/:id', authenticateAdmin, async (req, res) => {
   try {
+    const itemRes = await pool.query('SELECT image_url FROM activities_news WHERE id = $1', [req.params.id]);
+    if (itemRes.rows.length > 0 && itemRes.rows[0].image_url) {
+      const publicId = extractPublicId(itemRes.rows[0].image_url);
+      if (publicId) await cloudinary.uploader.destroy(publicId).catch(err => console.error('Cloudinary delete error:', err));
+    }
     await pool.query('DELETE FROM activities_news WHERE id = $1', [req.params.id]);
     res.json({ success: true, message: 'Activity deleted' });
   } catch (error) {
+    console.error('Activity delete error:', error);
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });
@@ -375,9 +401,15 @@ app.post('/api/admin/pages', authenticateAdmin, upload.single('image'), async (r
 // Delete specific page item
 app.delete('/api/admin/pages/:id', authenticateAdmin, async (req, res) => {
   try {
+    const itemRes = await pool.query('SELECT image_url FROM pages_content WHERE id = $1', [req.params.id]);
+    if (itemRes.rows.length > 0 && itemRes.rows[0].image_url) {
+      const publicId = extractPublicId(itemRes.rows[0].image_url);
+      if (publicId) await cloudinary.uploader.destroy(publicId).catch(err => console.error('Cloudinary delete error:', err));
+    }
     await pool.query('DELETE FROM pages_content WHERE id = $1', [req.params.id]);
     res.json({ success: true, message: 'Item deleted' });
   } catch (error) {
+    console.error('Page item delete error:', error);
     res.status(500).json({ success: false, message: 'Server error' });
   }
 });
