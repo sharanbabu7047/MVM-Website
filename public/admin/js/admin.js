@@ -145,23 +145,23 @@ document.addEventListener('DOMContentLoaded', () => {
               });
             });
 
-            // Adjust placeholders based on slug
-            if (slug === 'syllabus') {
-              document.getElementById('page_title').placeholder = 'Primary I to V Subject (e.g., English)';
-              document.getElementById('page_content_text').placeholder = 'Middle School VI to VIII Subject (e.g., Science)';
-              document.getElementById('page_image').style.display = 'none';
-              document.getElementById('page_image').previousElementSibling.style.display = 'none'; // hide the label
-              document.getElementById('page_image').removeAttribute('required');
-            } else {
-              document.getElementById('page_title').placeholder = 'Page Main Title';
-              document.getElementById('page_content_text').placeholder = 'Page Content (Text/Paragraphs)';
-              document.getElementById('page_image').style.display = 'block';
-              document.getElementById('page_image').previousElementSibling.style.display = 'block';
-              document.getElementById('page_image').setAttribute('required', 'true');
-            }
-
           } else {
             list.innerHTML = '<p>No items found for this page.</p>';
+          }
+
+          // Adjust placeholders based on slug (must run regardless of whether items exist)
+          if (slug === 'syllabus') {
+            document.getElementById('page_title').placeholder = 'Primary I to V Subject (e.g., English)';
+            document.getElementById('page_content_text').placeholder = 'Middle School VI to VIII Subject (e.g., Science)';
+            document.getElementById('page_image').style.display = 'none';
+            document.getElementById('page_image').previousElementSibling.style.display = 'none'; // hide the label
+            document.getElementById('page_image').removeAttribute('required');
+          } else {
+            document.getElementById('page_title').placeholder = 'Page Main Title';
+            document.getElementById('page_content_text').placeholder = 'Page Content (Text/Paragraphs)';
+            document.getElementById('page_image').style.display = 'block';
+            document.getElementById('page_image').previousElementSibling.style.display = 'block';
+            document.getElementById('page_image').setAttribute('required', 'true');
           }
         } catch (err) {
           console.error(err);
