@@ -590,7 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
               container.innerHTML = gridHtml;
             }
           } else {
-            container.innerHTML = '<p style="text-align:center; padding: 40px; color: #888;">Content coming soon...</p>';
+            container.innerHTML = '';
           }
         } catch(err) {
           console.error('Failed to load page content for', slug, err);
