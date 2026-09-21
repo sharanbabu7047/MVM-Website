@@ -1501,3 +1501,55 @@ footer {
   width: auto !important;
   height: auto !important;
 }
+
+/* Homepage Welcome Architectural Watermark */
+.welcome-watermark-bg {
+  background-color: var(--pastel-green-light);
+  padding: 60px 0;
+}
+
+.welcome-watermark-content {
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  padding: 45px 50px;
+  border-radius: var(--border-radius-lg);
+  border: 1.5px solid rgba(15, 144, 72, 0.25);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+.welcome-watermark-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/homepage_watermark_v2.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+.welcome-watermark-content:hover::before {
+  opacity: 0.40;
+}
+
+.welcome-watermark-content > * {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .welcome-watermark-content {
+    padding: 25px 20px;
+  }
+  .welcome-watermark-content::before {
+    opacity: 0.22;
+  }
+}
+

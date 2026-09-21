@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maharishi Vidya Mandir, Red Hills | Official School Website</title>
   <meta name="description" content="Official website of Maharishi Vidya Mandir, Red Hills, Chennai. CBSE Curriculum from Kindergarten to Class VII with Transcendental Meditation, Yogasana, and Pranayama.">
-  <link rel="stylesheet" href="css/style.css?v=1.6">
+  <link rel="stylesheet" href="css/style.css?v=1.9">
   <link rel="icon" type="image/png" href="images/logo.png">
 </head>
 <body>
@@ -50,6 +50,7 @@
           <ul class="dropdown-menu">
             <li><a href="history.html">History</a></li>
             <li><a href="our-founder.html">Our Founder</a></li>
+            <li><a href="infrastructure.html">Infrastructure</a></li>
             <li><a href="teacher-training.html">Teacher Training</a></li>
             <li><a href="gallery.html">Activities and Events</a></li>
           </ul>
@@ -75,7 +76,8 @@
         <li class="nav-item"><a href="admissions.html">Admissions</a></li>
         
         <li class="nav-item"><a href="contact.html">Contact Us</a></li>
-        <li class="nav-item"><a href="admin/login.html" style="color:#ffcc00; font-weight:bold;">Admin Login</a></li>
+        <li class="nav-item"><a href="admin/login.html" class="admin-nav-link" style="color: #ffda6a; font-weight: bold;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Admin Portal</a></li>
+        
       </ul>
 
       <button class="mobile-nav-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation">
@@ -125,10 +127,10 @@
       </div>
     </section>
 
-    <!-- Welcome Section (PDF Text) -->
-    <section class="section" id="welcome-section" style="background-color: var(--white);">
+    <!-- Welcome Section with Architectural Watermark -->
+    <section class="section welcome-watermark-bg" id="welcome-section">
       <div class="container">
-        <div style="max-width: 900px; margin: 0 auto;">
+        <div class="welcome-watermark-content" style="max-width: 960px; margin: 0 auto;">
           <span class="section-header" style="text-align: center; margin-bottom: 25px; display: block;">
             <span class="subtitle">Welcome to our School</span>
             <h2 style="color: var(--mvm-green-dark); font-size: 2.2rem; font-family: var(--font-serif); margin-top: 5px;">Maharishi Vidya Mandir, Red Hills</h2>
@@ -136,9 +138,15 @@
           <p style="font-size: 1.15rem; line-height: 1.85; color: var(--text-dark); margin-bottom: 20px; font-weight: 600; text-align: center; font-family: var(--font-serif);">
             Education is vital for the holistic development of a child. Our prime focus is not only on developing a child’s intellectual capacities, but also to provide opportunities to explore other dimensions of life. If we want to see the world as a just and fair place where everyone is given equal opportunities, MVM is what we require.
           </p>
-          <p style="font-size: 1.08rem; line-height: 1.8; color: var(--text-muted); text-align: justify; font-family: var(--font-serif);">
+          <p style="font-size: 1.08rem; line-height: 1.8; color: var(--text-muted); text-align: justify; font-family: var(--font-serif); margin-bottom: 20px;">
             Here in MVM, we provide children with an inspiring and loving atmosphere that is devoid of fear, ridicule, and comparison. MVM moulds children into vibrant human beings who have the necessary confidence, openness and willingness to question themselves and the world around them. MVM creates learning spaces to support your child's learning process through week-long programme mode. MVM is a stress-free environment with transcendental meditation.
           </p>
+          <div style="text-align: center; margin-top: 25px;">
+            <a href="infrastructure.html" class="btn" style="background: var(--mvm-green); color: var(--white); border-radius: 25px; padding: 10px 26px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: var(--shadow-sm); display: inline-flex; align-items: center; gap: 8px;">
+              <span>Explore Our Campus Architecture</span>
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -232,10 +240,11 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="admissions.html">Admissions</a></li>
           <li><a href="academics.html">Academics</a></li>
-          <li><a href="facilities.html">Facilities</a></li>
+          <li><a href="infrastructure.html">Infrastructure</a></li>
           <li><a href="gallery.html">Activities and Events</a></li>
           
           <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="admin/login.html">Admin Portal</a></li>
         </ul>
       </div>
 
@@ -271,7 +280,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Maharishi Vidya Mandir, Red Hills. All Rights Reserved.</p>
+      <p>&copy; 2026 Maharishi Vidya Mandir, Red Hills. All Rights Reserved. &bull; <a href="admin/login.html" style="color: rgba(255,255,255,0.75); text-decoration: underline;">Admin Portal</a></p>
     </div>
   </footer>
 
