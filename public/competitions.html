@@ -105,7 +105,7 @@
     </section>
 
     <!-- Competitions Section -->
-    <section class="section" id="competitions-section" style="background-color: var(--white); min-height: 300px;">
+    <section class="section" id="competitions-section" style="background-color: var(--white); min-height: 300px; padding: 60px 0;">
       <div class="container">
         <!-- Content intentionally left empty to match template placeholder layout -->
         <div id="dynamic-page-content" data-page-slug="competitions"></div>
@@ -173,6 +173,81 @@
     </div>
   </footer>
 
+  <!-- Lightbox Modal container -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+      <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous Photo">&#10094;</button>
+      <img src="" alt="Fullscreen Lightbox Image" id="lightbox-img">
+      <button class="lightbox-next" id="lightbox-next" aria-label="Next Photo">&#10095;</button>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('dynamic-page-content');
+      if (!container) return;
+
+      const setupLightbox = () => {
+        const imgs = container.querySelectorAll('img');
+        if (!imgs.length) return false;
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        let allImages = [];
+        let currentIndex = 0;
+
+        imgs.forEach((img, idx) => {
+          img.style.cursor = 'pointer';
+          img.title = 'Click to enlarge';
+          allImages.push(img.src);
+          img.addEventListener('click', () => {
+            currentIndex = idx;
+            showLightbox(currentIndex);
+          });
+        });
+
+        function showLightbox(idx) {
+          if (allImages.length > 0 && lightboxImg) {
+            lightboxImg.src = allImages[idx];
+            lightbox.classList.add('active');
+          }
+        }
+
+        if (lightboxClose) {
+          lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
+        }
+        if (lightboxPrev) {
+          lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+            showLightbox(currentIndex);
+          });
+        }
+        if (lightboxNext) {
+          lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % allImages.length;
+            showLightbox(currentIndex);
+          });
+        }
+        if (lightbox) {
+          lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) lightbox.classList.remove('active');
+          });
+        }
+        return true;
+      };
+
+      const observer = new MutationObserver(() => {
+        if (setupLightbox()) observer.disconnect();
+      });
+      observer.observe(container, { childList: true, subtree: true });
+    });
+  </script>
 </body>
 </html>

@@ -566,7 +566,43 @@ document.addEventListener('DOMContentLoaded', () => {
               });
               
               tableHtml += `</tbody></table></div>`;
-              container.innerHTML = tableHtml;
+            } else if (slug === 'competitions') {
+              const groups = {};
+              data.data.forEach(item => {
+                const topic = item.title || 'Competitions';
+                if (!groups[topic]) groups[topic] = [];
+                groups[topic].push(item);
+              });
+
+              let compHtml = '';
+              for (const [topic, items] of Object.entries(groups)) {
+                compHtml += `
+                  <div class="competition-group" style="margin-bottom: 50px;">
+                    <div style="border-bottom: 2px solid var(--mvm-gold); padding-bottom: 12px; margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                      <div>
+                        <span style="color: var(--mvm-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; display: block; margin-bottom: 4px;">Competitions & Events</span>
+                        <h2 style="color: var(--mvm-green-dark); margin: 0; font-size: 2rem;">${topic}</h2>
+                      </div>
+                      <span style="background: var(--pastel-green, #e8f5e9); color: var(--mvm-green-dark); padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 0.88rem; border: 1px solid rgba(12, 111, 55, 0.15);">From Ideas to Excellence</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;">
+                `;
+
+                items.forEach(it => {
+                  const caption = it.content_text ? `<div style="padding: 14px 18px; background: var(--white); border-top: 1px solid #f1f5f9;"><p style="margin: 0; font-size: 0.95rem; font-weight: 600; color: var(--text-dark);">${it.content_text}</p></div>` : '';
+                  compHtml += `
+                    <div style="background: var(--white); border-radius: var(--border-radius); box-shadow: var(--shadow-sm); overflow: hidden; display: flex; flex-direction: column; border: 1px solid #e5e7eb;">
+                      <div style="overflow: hidden; background: #f8fafc; cursor: pointer;" title="Click to view full image">
+                        <img src="${it.image_url}" alt="${it.content_text || topic}" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform 0.4s ease;">
+                      </div>
+                      ${caption}
+                    </div>
+                  `;
+                });
+
+                compHtml += `</div></div>`;
+              }
+              container.innerHTML = compHtml;
             } else {
               let gridHtml = '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding: 20px 0;">';
               

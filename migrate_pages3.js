@@ -36,13 +36,19 @@ const run = async () => {
     await insertItem('achievements', 'SSE Results (Pg 2) - 2026', '', path.join(__dirname, 'images/SSE-Result-pg2.jpg'));
 
     // Extra-curricular
-    await insertItem('extra-curricular', 'Football', 'Every child’s fantasy begins with being the next Lionel Messi. Football is the most popular sport and every child must have that experience.', 'https://mvmschoolschetpet.com/wp-content/uploads/2023/12/sportday_7-1.jpeg');
+    await insertItem('extra-curricular', 'Athletics', 'Events like 100m, javelin, Long Jump, etc., are all a part of Athletics which boost the morale of our students to try harder with better preparations everytime they perform. These activities stretch their abilities and enhance their stamina, muscle tone and have a number of physical benefits.', 'https://res.cloudinary.com/mlsqzeb2/image/upload/v1790178559/mvm_pages/b1tobovyzwbknvbpec2n.jpg');
     await insertItem('extra-curricular', 'VolleyBall', 'Volleyball is a sport that requires teamwork and coordination. Children learn to work in a team, take responsibility and trust their teammates.', 'https://mvmschoolschetpet.com/wp-content/uploads/2023/12/sportday_11.jpeg');
     await insertItem('extra-curricular', 'Meditation', 'Transcendental Meditation is an integral part of our curriculum. It helps students reduce stress, improve focus, and develop their full creative potential for better academic and personal growth.', path.join(__dirname, 'images/meditation_1.jpg'));
 
     // After-school
     await insertItem('after-school', 'Yoga', '', 'https://www.mvmmangadu.in/wp-content/uploads/2020/01/Yoga.jpg');
     await insertItem('after-school', 'Basketball', '', 'https://www.mvmmangadu.in/wp-content/uploads/2020/01/Basketball.jpg');
+
+    // Competitions
+    await insertItem('competitions', 'Udbhav', '', path.join(__dirname, 'public/images/udbhav_poster.jpg'));
+    await insertItem('competitions', 'Udbhav', '', path.join(__dirname, 'public/images/udbhav_competition.jpg'));
+    await insertItem('competitions', 'Udbhav', '', path.join(__dirname, 'public/images/udbhav_winners.jpg'));
+    await insertItem('competitions', 'Udbhav', '', path.join(__dirname, 'public/images/udbhav_felicitation.jpg'));
   } catch (err) {
     console.error(err);
   } finally {
