@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
               let gridHtml = '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding: 20px 0;">';
               
               data.data.forEach(pageData => {
-                const contentHtml = pageData.content_text ? `<div style="font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); margin-top: 15px;">${pageData.content_text.replace(/\\n/g, '<br>')}</div>` : '';
+                const contentHtml = pageData.content_text ? `<div style="font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); margin-top: 15px; text-align: justify;">${pageData.content_text.replace(/\\n/g, '<br>')}</div>` : '';
                 const imgHtml = pageData.image_url ? `<img src="${pageData.image_url}" alt="${pageData.title}" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: var(--border-radius) var(--border-radius) 0 0;">` : '';
                 const titleHtml = pageData.title ? `<h3 style="color: var(--primary-color); margin-top: 15px; margin-bottom: 5px;">${pageData.title}</h3>` : '';
                 
