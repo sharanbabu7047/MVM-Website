@@ -566,6 +566,7 @@ document.addEventListener('DOMContentLoaded', () => {
               });
               
               tableHtml += `</tbody></table></div>`;
+              container.innerHTML = tableHtml;
             } else if (slug === 'competitions') {
               const groups = {};
               data.data.forEach(item => {

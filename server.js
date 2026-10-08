@@ -38,8 +38,19 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from the public directory
+// Serve static files from the public directory (must be before Vercel middleware)
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Vercel deployment fix: Restore /api prefix if Vercel stripped it
+// This ONLY runs on Vercel (where VERCEL env var is set), not locally
+if (process.env.VERCEL) {
+  app.use((req, res, next) => {
+    if (req.url && !req.url.startsWith('/api')) {
+      req.url = '/api' + req.url;
+    }
+    next();
+  });
+}
 
 // Initialize Database
 initDB();
