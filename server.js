@@ -266,7 +266,8 @@ const extractPublicId = (url) => {
     const uploadIndex = parts.indexOf('upload');
     if (uploadIndex === -1) return null;
     const pathAfterVersion = parts.slice(uploadIndex + 2).join('/');
-    return pathAfterVersion.substring(0, pathAfterVersion.lastIndexOf('.'));
+    const lastDotIndex = pathAfterVersion.lastIndexOf('.');
+    return lastDotIndex !== -1 ? pathAfterVersion.substring(0, lastDotIndex) : pathAfterVersion;
   } catch (e) {
     return null;
   }
@@ -344,7 +345,7 @@ app.delete('/api/admin/activities/:id', authenticateAdmin, async (req, res) => {
 // Get specific page content (Multiple items)
 app.get('/api/pages/:slug', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM pages_content WHERE page_slug = $1 ORDER BY updated_at DESC', [req.params.slug]);
+    const result = await pool.query('SELECT * FROM pages_content WHERE page_slug = $1 ORDER BY id ASC', [req.params.slug]);
     res.json({ success: true, data: result.rows });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Server error' });
